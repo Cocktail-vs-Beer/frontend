@@ -10,8 +10,16 @@ const Navbar = () => {
         className="c-navbar__logo"
       />
       <ul className="c-navbar__list">
-        <li className="c-navbar__list-item">faq</li>
-        <li className="c-navbar__list-item">line up</li>
+        <li className="c-navbar__list-item">
+          <a className="c-navbar__nav-link" href="#faq">
+            faq
+          </a>
+        </li>
+        <li className="c-navbar__list-item">
+          <a className="c-navbar__nav-link" href="#lineup">
+            line up
+          </a>
+        </li>
       </ul>
     </nav>
   );
