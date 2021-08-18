@@ -1,4 +1,16 @@
 .c-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     &__logo {
+    }
+    &__list {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        align-items: center;
+    }
+    &__list-item {
+        padding: 0 1em;
     }
 }

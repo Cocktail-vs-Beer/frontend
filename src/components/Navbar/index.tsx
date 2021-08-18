@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="c-navbar">
       <Image
         src="/images/LogoKAJ.png"
         alt="Logo KAJ"
@@ -11,10 +11,10 @@ const Navbar = () => {
         width="74"
         height="64"
       />
-      <ul>
-        <li>faq</li>
-        <li>line up</li>
-        <li>
+      <ul className="c-navbar__list">
+        <li className="c-navbar__list-item">faq</li>
+        <li className="c-navbar__list-item">line up</li>
+        <li className="c-navbar__list-item">
           <button>bestel ticket</button>
         </li>
       </ul>
