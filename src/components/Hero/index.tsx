@@ -10,6 +10,7 @@ const Hero = () => {
         <br />
         2021
       </h1>
+      <button className="c-hero__cta">Bestel ticket!</button>
     </section>
   );
 };
