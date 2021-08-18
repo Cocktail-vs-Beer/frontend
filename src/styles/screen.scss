@@ -4,6 +4,7 @@
 @import "./settings/colors.scss";
 @import "./settings/fonts.scss";
 @import "./settings/mixins";
+
 // Elements
 @import "./elements/page.scss";
 
@@ -15,3 +16,6 @@
 @import "./components/faq.scss";
 
 // Objects
+
+// utilities
+@import "./utilities/width.scss";

@@ -13,6 +13,6 @@ p {
 }
 
 ::selection {
-  // background: var(--global-theme-color);
-  // color: var(--global-color-neutral-500);
+  background: map-get($map: $primary-colors, $key: pink);
+  color: white;
 }
