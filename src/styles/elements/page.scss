@@ -1,0 +1,18 @@
+html {
+  background: map-get($map: $primary-colors, $key: blue500);
+  scroll-behavior: smooth;
+  color: map-get($map: $primary-colors, $key: white);
+}
+
+body {
+  font-family: "Leo Rounded Light";
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  // background: var(--global-theme-color);
+  // color: var(--global-color-neutral-500);
+}
