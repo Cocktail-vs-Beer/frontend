@@ -3,7 +3,7 @@ import LogoCocktail from "../../../public/images/LogoCocktail.svg";
 
 const Hero = () => {
   return (
-    <section className="c-hero">
+    <section className="c-hero o-row o-row--xl">
       <LogoCocktail className="c-hero__logo" />
       <h1>
         zaterdag 2 oktober

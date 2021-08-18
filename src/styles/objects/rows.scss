@@ -1,0 +1,32 @@
+.o-row {
+    padding: 24px 24px 0;
+    &--lg {
+        padding-top: 48px;
+        padding-bottom: 24px;
+    }
+    &--xl {
+        padding-top: 72px;
+        padding-bottom: 48px;
+    }
+}
+
+@media (min-width: 768px) {
+    .o-row {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+    .o-row--md {
+        padding-top: 48px;
+        padding-bottom: 24px;
+    }
+    .o-row--lg {
+        padding-top: 72px;
+        padding-bottom: 48px;
+    }
+}
+@media (min-width: 992px) {
+    .o-row--xl {
+        padding-top: 96px;
+        padding-bottom: 72px;
+    }
+}

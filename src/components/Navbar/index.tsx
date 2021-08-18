@@ -11,13 +11,13 @@ const Navbar = () => {
       />
       <ul className="c-navbar__list">
         <li className="c-navbar__list-item">
-          <a className="c-navbar__nav-link" href="#faq">
-            faq
+          <a className="c-navbar__nav-link" href="#lineup">
+            line up
           </a>
         </li>
         <li className="c-navbar__list-item">
-          <a className="c-navbar__nav-link" href="#lineup">
-            line up
+          <a className="c-navbar__nav-link" href="#faq">
+            faq
           </a>
         </li>
       </ul>

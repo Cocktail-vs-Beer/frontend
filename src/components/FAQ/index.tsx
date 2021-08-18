@@ -9,7 +9,7 @@ interface FaqProps {
 
 const FAQ: FunctionComponent<FaqProps> = ({ qas }) => {
   return (
-    <section id="faq" className="c-faq">
+    <section id="faq" className="c-faq o-row o-row--xl">
       <h2 className="c-faq__title">faq</h2>
       {qas.map(({ question, answer }) => (
         <details className="c-faq__question">
