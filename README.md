@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2f4dc3c2-e9fc-4a1c-9910-44079a165fb7/deploy-status)](https://app.netlify.com/sites/cocktailvsbeer/deploys)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
