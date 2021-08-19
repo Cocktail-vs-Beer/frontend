@@ -1,0 +1,23 @@
+@import "./generic/normalize.scss";
+
+// Settings
+@import "./settings/colors.scss";
+@import "./settings/fonts.scss";
+@import "./settings/mixins";
+
+// Elements
+@import "./elements/page.scss";
+
+// Components
+@import "./components/footer.scss";
+@import "./components/navbar.scss";
+@import "./components/hero.scss";
+@import "./components/lineup.scss";
+@import "./components/faq.scss";
+
+// Objects
+@import "./objects/rows.scss";
+@import "./objects/container.scss";
+
+// utilities
+@import "./utilities/width.scss";

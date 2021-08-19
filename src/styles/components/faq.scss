@@ -1,0 +1,17 @@
+.c-faq {
+    &__question {
+        border: 3px solid white;
+        padding: 1em 2em;
+        margin: 0 0 1em;
+        cursor: pointer;
+        &-title {
+            font-family: "Leo Rounded Bold";
+        }
+        &-answer {
+            margin-top: 1em;
+        }
+    }
+    &__title {
+        text-align: center;
+    }
+}
