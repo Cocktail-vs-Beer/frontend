@@ -1,0 +1,8 @@
+.o-container {
+    margin: 2em 1em;
+}
+
+@include md {
+    .o-container {
+    }
+}

@@ -5,6 +5,8 @@
     flex-direction: column;
     align-items: center;
     &__logo {
+        width: 70%;
+        margin: auto;
     }
     &__cta {
         @extend .o-button-reset;

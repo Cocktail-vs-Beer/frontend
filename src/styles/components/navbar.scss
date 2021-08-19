@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: auto;
     &__logo {
         height: 64px;
         margin-left: 1em;
@@ -20,4 +21,20 @@
 .c-navbar__nav-link {
     text-decoration: none;
     color: white;
+    font-size: 1rem;
+}
+
+@include md {
+    .c-navbar {
+        max-width: 70em;
+    }
+}
+@include lg {
+    .c-navbar {
+    }
+}
+@include xl {
+    .c-navbar {
+        max-width: 100em;
+    }
 }

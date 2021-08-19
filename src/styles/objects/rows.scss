@@ -1,32 +1,33 @@
 .o-row {
-    padding: 24px 24px 0;
-    &--lg {
-        padding-top: 48px;
-        padding-bottom: 24px;
-    }
-    &--xl {
-        padding-top: 72px;
-        padding-bottom: 48px;
-    }
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    // padding: 24px 24px 0;
+    margin: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
 
-@media (min-width: 768px) {
+@include md {
     .o-row {
-        padding-left: 48px;
-        padding-right: 48px;
-    }
-    .o-row--md {
-        padding-top: 48px;
-        padding-bottom: 24px;
-    }
-    .o-row--lg {
-        padding-top: 72px;
-        padding-bottom: 48px;
+        // padding: 48px 48px 0;
+        max-width: 40em;
+        margin-top: 64px;
+        margin-bottom: 64px;
     }
 }
-@media (min-width: 992px) {
-    .o-row--xl {
-        padding-top: 96px;
-        padding-bottom: 72px;
+@include lg {
+    .o-row {
+        // padding: 72px 72px 0;
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+}
+@include xl {
+    .o-row {
+        // padding: 144px 144px 0;
+        max-width: 50em;
+        margin-top: 80px;
+        margin-bottom: 80px;
     }
 }

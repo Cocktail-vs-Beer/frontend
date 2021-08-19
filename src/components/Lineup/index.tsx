@@ -7,7 +7,7 @@ interface LineupProps {
 
 const Lineup: FunctionComponent<LineupProps> = ({ lineup }) => {
   return (
-    <section id="lineup" className="c-lineup o-row o-row--xl">
+    <section id="lineup" className="c-lineup o-row">
       <h2 className="c-lineup__title">Line up</h2>
       <div className="c-lineup-container">
         {lineup.map(({ timeslot, name }) => (
