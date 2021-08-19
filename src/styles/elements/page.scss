@@ -2,6 +2,7 @@ html {
   background: map-get($map: $primary-colors, $key: blue500);
   scroll-behavior: smooth;
   color: map-get($map: $primary-colors, $key: white);
+  font-size: 16px;
 }
 
 body {
@@ -15,4 +16,19 @@ p {
 ::selection {
   background: map-get($map: $primary-colors, $key: pink);
   color: white;
+}
+
+@include md {
+  html {
+  }
+}
+@include lg {
+  html {
+    font-size: 18px;
+  }
+}
+@include xl {
+  html {
+    font-size: 24px;
+  }
 }

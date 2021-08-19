@@ -26,7 +26,7 @@
 
 @include md {
     .c-navbar {
-        max-width: 70em;
+        max-width: 1120px;
     }
 }
 @include lg {
@@ -35,6 +35,6 @@
 }
 @include xl {
     .c-navbar {
-        max-width: 100em;
+        max-width: 1600px;
     }
 }
