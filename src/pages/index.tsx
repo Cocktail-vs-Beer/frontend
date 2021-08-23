@@ -1,4 +1,5 @@
 import React from "react";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -32,7 +33,6 @@ const questions: Array<TFAQ> = [
 export default function Home() {
   return (
     <>
-      {" "}
       <div className="o-container">
         <Navbar />
         <Hero />
