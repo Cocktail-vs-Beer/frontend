@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 
 import LogoCocktail from "../../../public/images/LogoCocktail.svg";
-
-const customStyles = {
-  content: {},
-};
+import Close from "../../../public/images/Close.svg";
 
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +44,13 @@ const Hero = () => {
         contentLabel="Bestel Tickets"
         className="c-ticketmodal"
         overlayClassName="c-ticketmodal-overlay"
-      />
+      >
+        <div className="c-ticketmodal__container">
+          <div className="c-ticketmodal-header">
+            <Close className="c-ticketmodal-header__svg" />
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 };
