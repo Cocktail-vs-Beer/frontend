@@ -10,12 +10,12 @@ const Lineup: FunctionComponent<LineupProps> = ({ lineup }) => {
     <section id="lineup" className="c-lineup o-row">
       <h2 className="c-lineup__title">Line up</h2>
       <div className="c-lineup-container">
-        {lineup.map(({ timeslot, name }) => (
-          <>
+        {lineup.map(({ timeslot, name }, index) => (
+          <React.Fragment key={`lineup-${index}`}>
             <p className="c-lineup__timeslot">{timeslot}</p>
             <div className="c-lineup__divider" />
             <p className="c-lineup__name">{name}</p>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </section>
