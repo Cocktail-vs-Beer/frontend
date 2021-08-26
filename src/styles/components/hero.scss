@@ -14,9 +14,10 @@
         font-family: "Leo Rounded Bold";
         border-radius: 4px;
         padding: 1em 1.5em;
-    }
-    &__cta:hover {
-        cursor: pointer;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 .c-hero > h1 {

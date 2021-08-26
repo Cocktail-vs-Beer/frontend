@@ -54,11 +54,12 @@ const Counter = ({ setNumberOfTickets, numberOfTickets }: any) => {
 };
 
 const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
+  const ticketPrice = 6;
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(numberOfTickets);
-  const [inputList, setInputList] = useState<Array<IInputList>>([
-    { naam: "", email: "" },
-  ]);
+
+  const [formvalues, setFormvalues] = useState({ naam: "", email: "" });
+  const [buttonString, setButtonString] = useState("");
 
   Modal.setAppElement("#__next");
 
@@ -70,39 +71,27 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
     setIsOpen(false);
   }
 
-  function handleInputValueChange(
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) {
+  function handleInputValueChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    const list = [...inputList];
-    list[index][name] = value;
-    setInputList(list);
+    setFormvalues({ ...formvalues, [name]: value });
   }
 
-  function handleRemoveInputField() {
-    console.log("remove input");
-
-    const list = [...inputList];
-    list.splice(-1);
-    setInputList(list);
-  }
-  function handleAddInputField() {
-    console.log("add input");
-    setInputList([...inputList, { naam: "", email: "" }]);
+  function setNewTicketNumber(_amount: number) {
+    setAmount(_amount);
+    setNumberOfTickets(_amount);
   }
 
-  function handleNewTicketAmount(_amount: number) {
-    if (_amount > amount) {
-      setNumberOfTickets(_amount);
-      setAmount(_amount);
-      handleAddInputField();
-    } else if (_amount < amount) {
-      setNumberOfTickets(_amount);
-      setAmount(_amount);
-      handleRemoveInputField();
-    }
+  function calcPayAmount(ticketAmount: number) {
+    return ticketAmount * ticketPrice;
   }
+
+  useEffect(() => {
+    setButtonString(
+      `betaal €${calcPayAmount(numberOfTickets).toLocaleString("be-NL", {
+        minimumFractionDigits: 2,
+      })}`
+    );
+  }, [numberOfTickets]);
 
   useEffect(() => {
     if (isOpen) {
@@ -139,38 +128,36 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
           </div>
           <form className="c-orderform">
             <Counter
-              setNumberOfTickets={handleNewTicketAmount}
+              setNumberOfTickets={setNewTicketNumber}
               numberOfTickets={numberOfTickets}
             />
 
-            {inputList.map((input, index) => (
-              <div
-                className="c-orderform__inputcontainer"
-                key={`inputlist-${index}`}
-              >
-                <label htmlFor="name">
-                  naam
-                  <br></br>
-                  <input
-                    className="c-orderform__input"
-                    name="naam"
-                    value={input.naam}
-                    onChange={(e) => handleInputValueChange(e, index)}
-                  />
-                </label>
-                <label htmlFor="email" className="c-orderform__label">
-                  e-mail
-                  <br></br>
-                  <input
-                    className="c-orderform__input"
-                    type="email"
-                    name="email"
-                    value={input.email}
-                    onChange={(e) => handleInputValueChange(e, index)}
-                  />
-                </label>
-              </div>
-            ))}
+            <div className="c-orderform__inputcontainer">
+              <label htmlFor="name">
+                naam
+                <br></br>
+                <input
+                  className="c-orderform__input"
+                  name="naam"
+                  value={formvalues.naam}
+                  onChange={(e) => handleInputValueChange(e)}
+                />
+              </label>
+              <label htmlFor="email" className="c-orderform__label">
+                e-mail
+                <br></br>
+                <input
+                  className="c-orderform__input"
+                  type="email"
+                  name="email"
+                  value={formvalues.email}
+                  onChange={(e) => handleInputValueChange(e)}
+                />
+              </label>
+              <button type="button" className="c-orderform__button">
+                {buttonString}
+              </button>
+            </div>
           </form>
         </div>
       </Modal>
