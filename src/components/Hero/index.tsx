@@ -57,6 +57,8 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const ticketPrice = 6;
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(numberOfTickets);
+  const [emailError, setEmailError] = useState(false);
+  const [nameError, setNameError] = useState(false);
 
   const [formvalues, setFormvalues] = useState({ naam: "", email: "" });
   const [buttonString, setButtonString] = useState("");
@@ -74,6 +76,11 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   function handleInputValueChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setFormvalues({ ...formvalues, [name]: value });
+    if (name === "naam") {
+      setNameError(false);
+    } else if (name === "email") {
+      setEmailError(false);
+    }
   }
 
   function setNewTicketNumber(_amount: number) {
@@ -83,6 +90,34 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
 
   function calcPayAmount(ticketAmount: number) {
     return ticketAmount * ticketPrice;
+  }
+
+  function isValidEmail(email: string) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function handleSubmit() {
+    if (formvalues.naam && formvalues.email && isValidEmail(formvalues.email)) {
+      // send to api
+      setEmailError(false);
+      setNameError(false);
+    } else {
+      if (!formvalues.naam) {
+        // randje rond naam input
+        setNameError(true);
+      }
+      if (!formvalues.email) {
+        // randje ron email input
+        setEmailError(true);
+      } else if (!isValidEmail(formvalues.email)) {
+        // randje rond email input
+        setEmailError(true);
+      }
+    }
   }
 
   useEffect(() => {
@@ -141,6 +176,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                   name="naam"
                   value={formvalues.naam}
                   onChange={(e) => handleInputValueChange(e)}
+                  style={nameError ? { borderColor: "#e72060" } : {}}
                 />
               </label>
               <label htmlFor="email" className="c-orderform__label">
@@ -151,10 +187,15 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                   type="email"
                   name="email"
                   value={formvalues.email}
+                  style={emailError ? { borderColor: "#e72060" } : {}}
                   onChange={(e) => handleInputValueChange(e)}
                 />
               </label>
-              <button type="button" className="c-orderform__button">
+              <button
+                type="button"
+                className="c-orderform__button"
+                onClick={handleSubmit}
+              >
                 {buttonString}
               </button>
             </div>
