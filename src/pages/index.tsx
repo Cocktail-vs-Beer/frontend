@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -30,12 +31,15 @@ const questions: Array<TFAQ> = [
 ];
 
 export default function Home() {
+  const [numberOfTickets, setNumberOfTickets] = useState(1);
   return (
     <>
-      {" "}
       <div className="o-container">
         <Navbar />
-        <Hero />
+        <Hero
+          setNumberOfTickets={setNumberOfTickets}
+          numberOfTickets={numberOfTickets}
+        />
         <Lineup lineup={lineup} />
         <FAQ qas={questions} />
       </div>

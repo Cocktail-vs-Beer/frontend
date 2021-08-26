@@ -37,6 +37,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="theme-color" content="#ffffff" />
         <title>Cocktail vs Beer</title>
+        <meta
+          name="description"
+          content="Cocktail vs Beer is een fuif in Machelen. De naam Cocktail vs Beer zegt al genoeg over ons concept; voor lekkere cocktails en bieren moet je bij ons zijn!"
+        />
       </Head>
       <Component {...pageProps} />
     </>

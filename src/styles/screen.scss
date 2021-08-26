@@ -9,11 +9,15 @@
 @import "./elements/page.scss";
 
 // Components
+@import "./components/input.scss";
 @import "./components/footer.scss";
 @import "./components/navbar.scss";
 @import "./components/hero.scss";
 @import "./components/lineup.scss";
 @import "./components/faq.scss";
+@import "./components/ticketmodal.scss";
+@import "./components/counter.scss";
+@import "./components/orderform.scss";
 
 // Objects
 @import "./objects/rows.scss";
