@@ -6,6 +6,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1"
+        ></meta>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
