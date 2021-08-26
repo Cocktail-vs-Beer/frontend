@@ -162,13 +162,12 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
             <Close className="c-ticketmodal-header__svg" onClick={closeModal} />
           </div>
           <form className="c-orderform">
-            <Counter
-              setNumberOfTickets={setNewTicketNumber}
-              numberOfTickets={numberOfTickets}
-            />
-
             <div className="c-orderform__inputcontainer">
-              <label htmlFor="name">
+              <Counter
+                setNumberOfTickets={setNewTicketNumber}
+                numberOfTickets={numberOfTickets}
+              />
+              <label className="c-orderform__label" htmlFor="name">
                 naam
                 <br></br>
                 <input
