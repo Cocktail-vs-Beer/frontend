@@ -172,6 +172,9 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                 naam
                 <br></br>
                 <input
+                  type="text"
+                  autoComplete="false"
+                  autoCapitalize="true"
                   className="c-orderform__input"
                   name="naam"
                   value={formvalues.naam}
