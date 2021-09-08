@@ -354,6 +354,12 @@ template {
     display: none;
 }
 
+#__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /**
 * Remove once I know where to actually put this
 */

@@ -184,7 +184,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
               <Counter
                 setNumberOfTickets={setNewTicketNumber}
                 numberOfTickets={numberOfTickets}
-                maxNoOfTickets={5}
+                maxNoOfTickets={50}
               />
               <label className="c-orderform__label" htmlFor="name">
                 naam
