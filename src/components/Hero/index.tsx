@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import LogoCocktail from "../../../public/images/LogoCocktail.svg";
 import Close from "../../../public/images/Close.svg";
 import { post } from "../../services/api";
+import Loader from "../Loader";
 
 const Counter = ({ setNumberOfTickets, numberOfTickets, maxNoOfTickets }: any) => {
   const [amount, setAmount] = useState(numberOfTickets);
@@ -61,6 +62,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [emailError, setEmailError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formvalues, setFormvalues] = useState({ naam: "", email: "" });
   const [buttonString, setButtonString] = useState("");
@@ -103,19 +105,23 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   }
 
   function validateForm() {
-    if (!formvalues.naam || formvalues.naam.length < 3 || formvalues.naam.length > 30)
-      setNameError(true);
-    if (!formvalues.email || !isValidEmail(formvalues.email))
-      setEmailError(true);
+    let valid = true;
+    if (!formvalues.naam || formvalues.naam.length < 3 || formvalues.naam.length > 30) {
+      setNameError(true); valid = false;
+    }
+    if (!formvalues.email || !isValidEmail(formvalues.email)) {
+      setEmailError(true); valid = false;
+    }
 
-    return !(nameError || emailError);
+    return valid;
   }
 
   async function handleSubmit() {
-    console.log(validateForm());
     if (!validateForm()) return;
+    if (isLoading) return;
 
     try {
+      setIsLoading(true);
       const [err, url] = await post('/order', {
         name: formvalues.naam,
         email: formvalues.email,
@@ -127,6 +133,8 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
     } catch(err) {
       console.error('CVB', err);
       setError('Er is een onverwachte fout opgetreden. Probeer het later opnieuw.');
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -210,7 +218,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                 className="c-orderform__button"
                 onClick={handleSubmit}
               >
-                {buttonString}
+                {isLoading ? <Loader /> : buttonString}
               </button>
             </div>
           </form>
