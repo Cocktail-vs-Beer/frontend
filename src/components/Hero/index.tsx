@@ -1,15 +1,17 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 
 import LogoCocktail from "../../../public/images/LogoCocktail.svg";
 import Close from "../../../public/images/Close.svg";
-import { IInputList } from "../../types/InputList";
+import { post } from "../../services/api";
+import Loader from "../Loader";
 
-const Counter = ({ setNumberOfTickets, numberOfTickets }: any) => {
+const Counter = ({ setNumberOfTickets, numberOfTickets, maxNoOfTickets }: any) => {
   const [amount, setAmount] = useState(numberOfTickets);
 
   function increase() {
     const newAmount = amount + 1;
+    if (newAmount > maxNoOfTickets) return;
     setAmount(newAmount);
     setNumberOfTickets(newAmount);
   }
@@ -59,6 +61,8 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [amount, setAmount] = useState(numberOfTickets);
   const [emailError, setEmailError] = useState(false);
   const [nameError, setNameError] = useState(false);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formvalues, setFormvalues] = useState({ naam: "", email: "" });
   const [buttonString, setButtonString] = useState("");
@@ -75,7 +79,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
 
   function handleInputValueChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    setFormvalues({ ...formvalues, [name]: value });
+    setFormvalues({ ...formvalues, [name]: value.trim() });
     if (name === "naam") {
       setNameError(false);
     } else if (name === "email") {
@@ -100,23 +104,37 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
     }
   }
 
-  function handleSubmit() {
-    if (formvalues.naam && formvalues.email && isValidEmail(formvalues.email)) {
-      // send to api
-      setEmailError(false);
-      setNameError(false);
-    } else {
-      if (!formvalues.naam) {
-        // randje rond naam input
-        setNameError(true);
-      }
-      if (!formvalues.email) {
-        // randje ron email input
-        setEmailError(true);
-      } else if (!isValidEmail(formvalues.email)) {
-        // randje rond email input
-        setEmailError(true);
-      }
+  function validateForm() {
+    let valid = true;
+    if (!formvalues.naam || formvalues.naam.length < 3 || formvalues.naam.length > 30) {
+      setNameError(true); valid = false;
+    }
+    if (!formvalues.email || !isValidEmail(formvalues.email)) {
+      setEmailError(true); valid = false;
+    }
+
+    return valid;
+  }
+
+  async function handleSubmit() {
+    if (!validateForm()) return;
+    if (isLoading) return;
+
+    try {
+      setIsLoading(true);
+      const [err, url] = await post('/order', {
+        name: formvalues.naam,
+        email: formvalues.email,
+        quantity: amount
+      });
+  
+      if (!err && url)
+        window.location.href = url;
+    } catch(err) {
+      console.error('CVB', err);
+      setError('Er is een onverwachte fout opgetreden. Probeer het later opnieuw.');
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -166,6 +184,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
               <Counter
                 setNumberOfTickets={setNewTicketNumber}
                 numberOfTickets={numberOfTickets}
+                maxNoOfTickets={5}
               />
               <label className="c-orderform__label" htmlFor="name">
                 naam
@@ -193,12 +212,13 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                   onChange={(e) => handleInputValueChange(e)}
                 />
               </label>
+              { error && <p className="c-orderform__error">{error}</p>}
               <button
                 type="button"
                 className="c-orderform__button"
                 onClick={handleSubmit}
               >
-                {buttonString}
+                {isLoading ? <Loader /> : buttonString}
               </button>
             </div>
           </form>
