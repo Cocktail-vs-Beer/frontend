@@ -17,16 +17,28 @@ const lineup: Array<TLineup> = [
 
 const questions: Array<TFAQ> = [
   {
-    question: "Wat als het evenement niet doorgaat?",
-    answer: "Dan krijgde wel uw geld terug.",
+    question: "Kan ik mijn auto of fiets ergens kwijt?",
+    answer: "Ja, er is parking voorzien voor auto's en fietsen.",
   },
   {
-    question: "Wat als het evenement niet doorgaat?",
-    answer: "Dan krijgde wel uw geld terug.",
+    question: "Is er een vestiaire?",
+    answer: "Ja, er is een vestiaire voorzien.",
   },
   {
-    question: "Wat als het evenement niet doorgaat?",
-    answer: "Dan krijgde wel uw geld terug.",
+    question: "Kunnen we op Cocktail vs Beer ook iets eten?",
+    answer: "Ja, er is een snacktent voorzien.",
+  },
+  {
+    question: "Heb ik een Covid Safe ticket nodig?",
+    answer: "Ja, voorlopig wel. Meer info op covidsafe.be. Neem ook je identiteitskaart mee, zodat we je Covid Safe ticket kunnen controleren.",
+  },
+  {
+    question: "Moet ik mijn identiteitskaart meenemen?",
+    answer: "Ja, let op: een foto/kopie van je identiteitskaart is niet geldig.",
+  },
+  {
+    question: "Kan ik contactloos betalen?",
+    answer: "Ja, je kan Cocktail vs Beer betalen met bankkaart en met Payconiq.",
   },
 ];
 

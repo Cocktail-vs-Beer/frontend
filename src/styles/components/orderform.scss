@@ -37,6 +37,12 @@
             cursor: pointer;
         }
     }
+    &__error {
+        margin-top: 1em;
+        font-family: "Comfortaa Light";
+        color: map-get($map: $primary-colors, $key: pink);
+        font-size: 16px;
+    }
 }
 
 @include md {
