@@ -8,6 +8,7 @@
         margin: 1em auto;
         display: flex;
         flex-direction: column;
+        max-width: 24%;
     }
     &__input {
         margin-top: 4px;
@@ -36,6 +37,12 @@
         &:hover {
             cursor: pointer;
         }
+    }
+    &__error {
+        margin-top: 1em;
+        font-family: "Comfortaa Light";
+        color: map-get($map: $primary-colors, $key: pink);
+        font-size: 16px;
     }
 }
 
