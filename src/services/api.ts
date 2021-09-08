@@ -1,5 +1,10 @@
+let useDevelopment = process.env.NODE_ENV === 'development';
+if (process.browser) {
+  const params = new URLSearchParams(window.location.href);
+  useDevelopment = !!params.get('debug');
+}
 
-const BASE_URL = process.env.NODE_ENV === 'development' ? 'https://xgvjhc94lf.execute-api.eu-west-3.amazonaws.com' : 'https://me87vyuhb3.execute-api.eu-west-3.amazonaws.com'
+const BASE_URL = useDevelopment ? 'https://xgvjhc94lf.execute-api.eu-west-3.amazonaws.com' : 'https://me87vyuhb3.execute-api.eu-west-3.amazonaws.com'
 
 export type error = {
   errorKey: string,
