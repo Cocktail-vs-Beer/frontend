@@ -1,5 +1,5 @@
 let useDevelopment = process.env.NODE_ENV === 'development';
-if (process.browser) {
+if (process.browser && !useDevelopment) {
   const params = new URLSearchParams(window.location.search.substring(1));
   useDevelopment = !!params.get('debug');
 }

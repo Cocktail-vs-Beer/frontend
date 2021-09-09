@@ -61,10 +61,11 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [amount, setAmount] = useState(numberOfTickets);
   const [emailError, setEmailError] = useState(false);
   const [nameError, setNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formvalues, setFormvalues] = useState({ naam: "", email: "" });
+  const [formvalues, setFormvalues] = useState({ naam: "", email: "", lastName: '' });
   const [buttonString, setButtonString] = useState("");
 
   Modal.setAppElement("#__next");
@@ -79,11 +80,13 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
 
   function handleInputValueChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    setFormvalues({ ...formvalues, [name]: value.trim() });
+    setFormvalues({ ...formvalues, [name]: value });
     if (name === "naam") {
       setNameError(false);
     } else if (name === "email") {
       setEmailError(false);
+    } else if(name === 'lastName') {
+      setLastNameError(false);
     }
   }
 
@@ -106,10 +109,17 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
 
   function validateForm() {
     let valid = true;
-    if (!formvalues.naam || formvalues.naam.length < 3 || formvalues.naam.length > 30) {
+    const firstName = formvalues.naam.trim();
+    const lastName = formvalues.lastName.trim();
+    const email = formvalues.email.trim();
+
+    if (!firstName || firstName.length < 3 || firstName.length > 30) {
       setNameError(true); valid = false;
     }
-    if (!formvalues.email || !isValidEmail(formvalues.email)) {
+    if (!lastName || lastName.length < 3 || lastName.length > 30) {
+      setLastNameError(true); valid = false;
+    }
+    if (!email || !isValidEmail(email)) {
       setEmailError(true); valid = false;
     }
 
@@ -123,7 +133,8 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
     try {
       setIsLoading(true);
       const [err, url] = await post('/order', {
-        name: formvalues.naam,
+        firstName: formvalues.naam,
+        lastName: formvalues.lastName,
         email: formvalues.email,
         quantity: amount
       });
@@ -187,7 +198,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                 maxNoOfTickets={50}
               />
               <label className="c-orderform__label" htmlFor="name">
-                naam
+                Voornaam
                 <br></br>
                 <input
                   type="text"
@@ -198,6 +209,20 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                   value={formvalues.naam}
                   onChange={(e) => handleInputValueChange(e)}
                   style={nameError ? { borderColor: "#e72060" } : {}}
+                />
+              </label>
+              <label className="c-orderform__label" htmlFor="name">
+                Achternaam
+                <br></br>
+                <input
+                  type="text"
+                  autoComplete="nope"
+                  autoCapitalize="true"
+                  className="c-orderform__input"
+                  name="lastName"
+                  value={formvalues.lastName}
+                  onChange={(e) => handleInputValueChange(e)}
+                  style={lastNameError ? { borderColor: "#e72060" } : {}}
                 />
               </label>
               <label htmlFor="email" className="c-orderform__label">
