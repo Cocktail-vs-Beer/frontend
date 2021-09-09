@@ -141,6 +141,22 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   
       if (!err && url)
         window.location.href = url;
+      else if (err) {
+        switch(err.errorKey) {
+          case 'soldOut':
+            setError('Helaas, alle tickets zijn uitverkocht!');
+            break;
+          case 'tooMany':
+            if (err.message === '1')
+              setError('Er is nog maar 1 ticket beschikbaar. Wees snel!');
+            else 
+              setError(`Er zijn nog maar ${err.message} ticket(s) beschikbaar. Wees snel!`);
+            break;
+          default:
+            setError('Er is een onverwachte fout opgetreden. Probeer het later opnieuw.');
+            break;
+        }
+      }
     } catch(err) {
       console.error('CVB', err);
       setError('Er is een onverwachte fout opgetreden. Probeer het later opnieuw.');

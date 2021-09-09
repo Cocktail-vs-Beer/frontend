@@ -1,11 +1,19 @@
 let useDevelopment = process.env.NODE_ENV === 'development';
-if (process.browser && !useDevelopment) {
-  const params = new URLSearchParams(window.location.search.substring(1));
-  useDevelopment = !!params.get('debug');
+let developEndpoint = 'https://xgvjhc94lf.execute-api.eu-west-3.amazonaws.com';
+
+if (process.browser) {
+  // Check if we should use the development endpoint on the production website
+  if (!useDevelopment) {
+    const params = new URLSearchParams(window.location.search.substring(1));
+    useDevelopment = !!params.get('debug');
+  }
+
+  // Update the develop endpoint when developing locally
+  developEndpoint = window.location.hostname === 'localhost' ? 'http://localhost:3001' : 'https://xgvjhc94lf.execute-api.eu-west-3.amazonaws.com'
 }
 
-console.log(useDevelopment);
-const BASE_URL = useDevelopment ? 'https://xgvjhc94lf.execute-api.eu-west-3.amazonaws.com' : 'https://me87vyuhb3.execute-api.eu-west-3.amazonaws.com'
+console.log(useDevelopment, developEndpoint);
+const BASE_URL = useDevelopment ? developEndpoint : 'https://me87vyuhb3.execute-api.eu-west-3.amazonaws.com'
 
 export type error = {
   errorKey: string,
