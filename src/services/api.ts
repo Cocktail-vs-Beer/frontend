@@ -12,7 +12,7 @@ if (process.browser) {
   developEndpoint = window.location.hostname === 'localhost' ? 'http://localhost:3001' : 'https://xgvjhc94lf.execute-api.eu-west-3.amazonaws.com'
 }
 
-console.log(useDevelopment, developEndpoint);
+console.log(useDevelopment);
 const BASE_URL = useDevelopment ? developEndpoint : 'https://me87vyuhb3.execute-api.eu-west-3.amazonaws.com'
 
 export type error = {

@@ -64,6 +64,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [lastNameError, setLastNameError] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [soldOut, setSoldOut] = useState(true);
 
   const [formvalues, setFormvalues] = useState({ naam: "", email: "", lastName: '' });
   const [buttonString, setButtonString] = useState("");
@@ -192,9 +193,16 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
         <br />
         2021
       </h1>
-      <button className="c-hero__cta" onClick={openModal}>
-        Bestel ticket
-      </button>
+      { soldOut ? (
+        <button className='c-hero__cta'>
+          Uitverkocht
+        </button>
+        ) : (
+          <button className="c-hero__cta" onClick={openModal}>
+            Bestel ticket
+          </button>
+        )
+      }
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}
