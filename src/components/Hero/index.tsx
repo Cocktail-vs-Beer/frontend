@@ -153,6 +153,9 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
             else 
               setError(`Er zijn nog maar ${err.message} ticket(s) beschikbaar. Wees snel!`);
             break;
+          case 'waveNotStarted':
+            setError('Nog even geduld. De tickets zijn binnenkort beschikbaar.');
+            break;
           default:
             setError('Er is een onverwachte fout opgetreden. Probeer het later opnieuw.');
             break;
