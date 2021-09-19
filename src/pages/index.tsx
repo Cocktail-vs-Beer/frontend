@@ -38,7 +38,7 @@ const questions: Array<TFAQ> = [
   },
   {
     question: "Kan ik contactloos betalen?",
-    answer: "Ja, je kan Cocktail vs Beer betalen met bankkaart en met Payconiq.",
+    answer: "Ja, je kan op Cocktail vs Beer betalen met bankkaart en met Payconiq.",
   },
 ];
 
