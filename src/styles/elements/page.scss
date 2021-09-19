@@ -32,3 +32,10 @@ p {
     font-size: 24px;
   }
 }
+
+.c-reservation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
