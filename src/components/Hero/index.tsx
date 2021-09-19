@@ -56,7 +56,7 @@ const Counter = ({ setNumberOfTickets, numberOfTickets, maxNoOfTickets }: any) =
 };
 
 const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
-  const ticketPrice = 6;
+  const ticketPrice = 8;
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(numberOfTickets);
   const [emailError, setEmailError] = useState(false);
