@@ -64,7 +64,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [lastNameError, setLastNameError] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [soldOut, setSoldOut] = useState(true);
+  const [soldOut, setSoldOut] = useState(false);
 
   const [formvalues, setFormvalues] = useState({ naam: "", email: "", lastName: '' });
   const [buttonString, setButtonString] = useState("");
