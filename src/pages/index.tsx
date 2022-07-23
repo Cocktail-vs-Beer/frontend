@@ -11,7 +11,7 @@ import { TFAQ } from "../types/FAQ";
 const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:30", name: "tba" },
   { timeslot: "22:30-00:00", name: "miles b2b tizzix" },
-  { timeslot: "00:00-02:00", name: "mc captain soundsystem" },
+  { timeslot: "00:00-02:00", name: "mc captain feat. lc lennert" },
   { timeslot: "02:00-03:30", name: "thomassive" },
   { timeslot: "03:30-04:30", name: "sïmplex" },
 ];
