@@ -6,7 +6,11 @@ import Close from "../../../public/images/Close.svg";
 import { post } from "../../services/api";
 import Loader from "../Loader";
 
-const Counter = ({ setNumberOfTickets, numberOfTickets, maxNoOfTickets }: any) => {
+const Counter = ({
+  setNumberOfTickets,
+  numberOfTickets,
+  maxNoOfTickets,
+}: any) => {
   const [amount, setAmount] = useState(numberOfTickets);
 
   function increase() {
@@ -62,11 +66,15 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [emailError, setEmailError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [soldOut, setSoldOut] = useState(true);
 
-  const [formvalues, setFormvalues] = useState({ naam: "", email: "", lastName: '' });
+  const [formvalues, setFormvalues] = useState({
+    naam: "",
+    email: "",
+    lastName: "",
+  });
   const [buttonString, setButtonString] = useState("");
 
   Modal.setAppElement("#__next");
@@ -86,7 +94,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
       setNameError(false);
     } else if (name === "email") {
       setEmailError(false);
-    } else if(name === 'lastName') {
+    } else if (name === "lastName") {
       setLastNameError(false);
     }
   }
@@ -115,13 +123,16 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
     const email = formvalues.email.trim();
 
     if (!firstName || firstName.length < 3 || firstName.length > 30) {
-      setNameError(true); valid = false;
+      setNameError(true);
+      valid = false;
     }
     if (!lastName || lastName.length < 3 || lastName.length > 30) {
-      setLastNameError(true); valid = false;
+      setLastNameError(true);
+      valid = false;
     }
     if (!email || !isValidEmail(email)) {
-      setEmailError(true); valid = false;
+      setEmailError(true);
+      valid = false;
     }
 
     return valid;
@@ -133,37 +144,44 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
 
     try {
       setIsLoading(true);
-      const [err, url] = await post('/order', {
+      const [err, url] = await post("/order", {
         firstName: formvalues.naam,
         lastName: formvalues.lastName,
         email: formvalues.email,
-        quantity: amount
+        quantity: amount,
       });
-  
-      if (!err && url)
-        window.location.href = url;
+
+      if (!err && url) window.location.href = url;
       else if (err) {
-        switch(err.errorKey) {
-          case 'soldOut':
-            setError('Helaas, alle tickets zijn uitverkocht!');
+        switch (err.errorKey) {
+          case "soldOut":
+            setError("Helaas, alle tickets zijn uitverkocht!");
             break;
-          case 'tooMany':
-            if (err.message === '1')
-              setError('Er is nog maar 1 ticket beschikbaar. Wees snel!');
-            else 
-              setError(`Er zijn nog maar ${err.message} ticket(s) beschikbaar. Wees snel!`);
+          case "tooMany":
+            if (err.message === "1")
+              setError("Er is nog maar 1 ticket beschikbaar. Wees snel!");
+            else
+              setError(
+                `Er zijn nog maar ${err.message} ticket(s) beschikbaar. Wees snel!`
+              );
             break;
-          case 'waveNotStarted':
-            setError('Nog even geduld. De tickets zijn binnenkort beschikbaar.');
+          case "waveNotStarted":
+            setError(
+              "Nog even geduld. De tickets zijn binnenkort beschikbaar."
+            );
             break;
           default:
-            setError('Er is een onverwachte fout opgetreden. Probeer het later opnieuw.');
+            setError(
+              "Er is een onverwachte fout opgetreden. Probeer het later opnieuw."
+            );
             break;
         }
       }
-    } catch(err) {
-      console.error('CVB', err);
-      setError('Er is een onverwachte fout opgetreden. Probeer het later opnieuw.');
+    } catch (err) {
+      console.error("CVB", err);
+      setError(
+        "Er is een onverwachte fout opgetreden. Probeer het later opnieuw."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -191,21 +209,17 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   return (
     <section className="c-hero o-row o-row--xl">
       <LogoCocktail className="c-hero__logo" />
-      <h1>
-        zaterdag 2 oktober
-        <br />
-        2021
-      </h1>
-      { soldOut ? (
-        <button className='c-hero__cta'>
-          Uitverkocht
+      <div className="c-hero__date-container">
+        <h1 className="c-hero__date-day">ZATERDAG</h1>
+        <h1 className="c-hero__date-date">1 OKTOBER 2022</h1>
+      </div>
+      {soldOut ? (
+        <button className="c-hero__cta">Bestel binnenkort</button>
+      ) : (
+        <button className="c-hero__cta" onClick={openModal}>
+          Bestel ticket
         </button>
-        ) : (
-          <button className="c-hero__cta" onClick={openModal}>
-            Bestel ticket
-          </button>
-        )
-      }
+      )}
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}
@@ -264,7 +278,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                   onChange={(e) => handleInputValueChange(e)}
                 />
               </label>
-              { error && <p className="c-orderform__error">{error}</p>}
+              {error && <p className="c-orderform__error">{error}</p>}
               <button
                 type="button"
                 className="c-orderform__button"

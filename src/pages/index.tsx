@@ -9,10 +9,11 @@ import FAQ from "../components/FAQ";
 import { TFAQ } from "../types/FAQ";
 
 const lineup: Array<TLineup> = [
-  { timeslot: "21:00-22:30", name: "Miles" },
-  { timeslot: "22:30-00:30", name: "Bibendum" },
-  { timeslot: "00:30-02:30", name: "Proudmich" },
-  { timeslot: "02:30-04:30", name: "Sïmplex" },
+  { timeslot: "21:00-22:30", name: "tba" },
+  { timeslot: "22:30-00:00", name: "miles b2b tizzix" },
+  { timeslot: "00:00-02:00", name: "mc captain soundsystem" },
+  { timeslot: "02:00-03:30", name: "thomassive" },
+  { timeslot: "03:30-04:30", name: "sïmplex" },
 ];
 
 const questions: Array<TFAQ> = [
@@ -27,10 +28,6 @@ const questions: Array<TFAQ> = [
   {
     question: "Kunnen we op Cocktail vs Beer ook iets eten?",
     answer: "Ja, er is een snacktent voorzien.",
-  },
-  {
-    question: "Heb ik een Covid Safe ticket nodig?",
-    answer: "Ja, voorlopig wel. Meer info op covidsafe.be. Neem ook je identiteitskaart mee, zodat we je Covid Safe ticket kunnen controleren.",
   },
   {
     question: "Moet ik mijn identiteitskaart meenemen?",
