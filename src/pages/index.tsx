@@ -11,6 +11,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import path from "path";
 import { promises as fs } from "fs";
 import Sponsors from "../components/Sponsors";
+import getConfig from "next/config";
 
 const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:30", name: "DJ contest winnaar" },
@@ -46,8 +47,12 @@ const questions: Array<TFAQ> = [
 ];
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  console.log(getConfig().serverRuntimeConfig.PROJECT_ROOT);
   try {
-    const sponsorDir = path.join(process.cwd(), "public/assets/sponsors");
+    const sponsorDir = path.join(
+      getConfig().serverRuntimeConfig.PROJECT_ROOT,
+      "/assets/sponsors"
+    );
 
     const fileContents = (await fs.readdir(sponsorDir)).map((file) => {
       const imagePath = `/assets/sponsors/${file}`;
@@ -69,6 +74,9 @@ export default function Home({
   sponsors,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [numberOfTickets, setNumberOfTickets] = useState(1);
+  console.log("====================================");
+  console.log(sponsors);
+  console.log("====================================");
   return (
     <>
       <div className="o-container">
