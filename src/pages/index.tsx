@@ -7,6 +7,10 @@ import Lineup from "../components/Lineup";
 import { TLineup } from "../types/Lineup";
 import FAQ from "../components/FAQ";
 import { TFAQ } from "../types/FAQ";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import path from "path";
+import { promises as fs } from "fs";
+import Sponsors from "../components/Sponsors";
 
 const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:30", name: "tba" },
@@ -31,15 +35,39 @@ const questions: Array<TFAQ> = [
   },
   {
     question: "Moet ik mijn identiteitskaart meenemen?",
-    answer: "Ja, let op: een foto/kopie van je identiteitskaart is niet geldig.",
+    answer:
+      "Ja, let op: een foto/kopie van je identiteitskaart is niet geldig.",
   },
   {
     question: "Kan ik contactloos betalen?",
-    answer: "Ja, je kan op Cocktail vs Beer betalen met bankkaart en met Payconiq.",
+    answer:
+      "Ja, je kan op Cocktail vs Beer betalen met bankkaart en met Payconiq.",
   },
 ];
 
-export default function Home() {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  try {
+    const sponsorDir = path.join(process.cwd(), "public/assets/sponsors");
+
+    const fileContents = (await fs.readdir(sponsorDir)).map((file) => {
+      const imagePath = `/assets/sponsors/${file}`;
+      const imageProps = {
+        src: imagePath,
+      };
+      return imageProps;
+    });
+
+    return { props: { sponsors: fileContents } };
+  } catch (error) {
+    return { props: { sponsors: [] } };
+  }
+
+  // Pass data to the page via props
+};
+
+export default function Home({
+  sponsors,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [numberOfTickets, setNumberOfTickets] = useState(1);
   return (
     <>
@@ -51,6 +79,7 @@ export default function Home() {
         />
         <Lineup lineup={lineup} />
         <FAQ qas={questions} />
+        <Sponsors sponsors={sponsors} />
       </div>
       <Footer />
     </>
