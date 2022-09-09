@@ -1,7 +1,4 @@
 module.exports = {
-  serverRuntimeConfig: {
-    PROJECT_ROOT: __dirname,
-  },
   distDir: "out",
   webpack(config) {
     config.module.rules.push({

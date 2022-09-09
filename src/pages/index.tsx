@@ -47,14 +47,12 @@ const questions: Array<TFAQ> = [
 ];
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  console.log(getConfig().serverRuntimeConfig.PROJECT_ROOT);
   try {
-    const sponsorDir = path.join(
-      getConfig().serverRuntimeConfig.PROJECT_ROOT,
-      "/assets/sponsors"
-    );
+    const dirRelativeToPublicFolder = "assets/sponsors";
 
-    const fileContents = (await fs.readdir(sponsorDir)).map((file) => {
+    const dir = path.resolve("./public", dirRelativeToPublicFolder);
+
+    const fileContents = (await fs.readdir(dir)).map((file) => {
       const imagePath = `/assets/sponsors/${file}`;
       const imageProps = {
         src: imagePath,
