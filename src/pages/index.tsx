@@ -68,9 +68,41 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   // Pass data to the page via props
 };
 
-export default function Home({
-  sponsors,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home({}: InferGetServerSidePropsType<
+  typeof getServerSideProps
+>) {
+  const sponsors = [
+    { src: "/assets/sponsors/1_heyerick.png" },
+    { src: "/assets/sponsors/2_samy-renting.png" },
+    { src: "/assets/sponsors/3_garage-de-prins.png" },
+
+    { src: "/assets/sponsors/afspanning.png" },
+    { src: "/assets/sponsors/arc3c.png" },
+    { src: "/assets/sponsors/biosolutions.png" },
+    { src: "/assets/sponsors/brick-fun.png" },
+    { src: "/assets/sponsors/carrefour.png" },
+    { src: "/assets/sponsors/de-jans-gas.png" },
+    { src: "/assets/sponsors/drukkerij-de-schrijver.png" },
+    { src: "/assets/sponsors/een-kleintje-met.png" },
+    { src: "/assets/sponsors/eendracht.png" },
+    { src: "/assets/sponsors/elektro-service-maes.png" },
+    { src: "/assets/sponsors/fintro-denys.png" },
+    { src: "/assets/sponsors/4_rvb.png" },
+    { src: "/assets/sponsors/5_pizza-di-trevi.png" },
+    { src: "/assets/sponsors/6_stampix.png" },
+    { src: "/assets/sponsors/julie-braem.png" },
+    { src: "/assets/sponsors/krist-renting.png" },
+    { src: "/assets/sponsors/kvk.png" },
+    { src: "/assets/sponsors/marron.png" },
+    { src: "/assets/sponsors/minne.png" },
+    { src: "/assets/sponsors/onze-architecten.png" },
+    { src: "/assets/sponsors/pitta-melita.png" },
+    { src: "/assets/sponsors/pizza-matic.png" },
+    { src: "/assets/sponsors/stella.png" },
+    { src: "/assets/sponsors/tuinen-gevaert.png" },
+    { src: "/assets/sponsors/vopo.png" },
+  ];
+
   const [numberOfTickets, setNumberOfTickets] = useState(1);
   console.log("====================================");
   console.log(sponsors);

@@ -4,8 +4,6 @@ import ImageListItem from "@mui/material/ImageListItem";
 interface sponsorProps {
   sponsors: Array<{
     src: string;
-    width: number;
-    height: number;
   }>;
 }
 
