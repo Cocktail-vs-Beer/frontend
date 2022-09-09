@@ -13,7 +13,7 @@ import { promises as fs } from "fs";
 import Sponsors from "../components/Sponsors";
 
 const lineup: Array<TLineup> = [
-  { timeslot: "21:00-22:30", name: "tba" },
+  { timeslot: "21:00-22:30", name: "DJ contest winnaar" },
   { timeslot: "22:30-00:00", name: "miles b2b tizzix" },
   { timeslot: "00:00-02:00", name: "mc captain feat. lc lennert" },
   { timeslot: "02:00-03:30", name: "thomassive" },
