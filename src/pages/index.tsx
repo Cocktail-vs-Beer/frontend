@@ -72,10 +72,10 @@ export default function Home({}: InferGetServerSidePropsType<
   typeof getServerSideProps
 >) {
   const sponsors = [
+    { src: "/assets/sponsors/stella.png" },
+    { src: "/assets/sponsors/3_garage-de-prins.png" },
     { src: "/assets/sponsors/1_heyerick.png" },
     { src: "/assets/sponsors/2_samy-renting.png" },
-    { src: "/assets/sponsors/3_garage-de-prins.png" },
-
     { src: "/assets/sponsors/afspanning.png" },
     { src: "/assets/sponsors/arc3c.png" },
     { src: "/assets/sponsors/biosolutions.png" },
@@ -87,6 +87,8 @@ export default function Home({}: InferGetServerSidePropsType<
     { src: "/assets/sponsors/eendracht.png" },
     { src: "/assets/sponsors/elektro-service-maes.png" },
     { src: "/assets/sponsors/fintro-denys.png" },
+
+    { src: "/assets/sponsors/3_dhaene.png" },
     { src: "/assets/sponsors/4_rvb.png" },
     { src: "/assets/sponsors/5_pizza-di-trevi.png" },
     { src: "/assets/sponsors/6_stampix.png" },
@@ -98,7 +100,7 @@ export default function Home({}: InferGetServerSidePropsType<
     { src: "/assets/sponsors/onze-architecten.png" },
     { src: "/assets/sponsors/pitta-melita.png" },
     { src: "/assets/sponsors/pizza-matic.png" },
-    { src: "/assets/sponsors/stella.png" },
+
     { src: "/assets/sponsors/tuinen-gevaert.png" },
     { src: "/assets/sponsors/vopo.png" },
   ];
