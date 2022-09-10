@@ -27,6 +27,8 @@
   &__date-day {
     margin-bottom: 0;
     font-family: "Moon Get";
+    margin-left: auto;
+    margin-right: auto;
     // font-size: 100%;
   }
   &__date-date {
@@ -34,6 +36,6 @@
     font-family: "Moon Get";
   }
 }
-.c-hero > h1 {
+.c-hero__date-date {
   text-align: center;
 }
