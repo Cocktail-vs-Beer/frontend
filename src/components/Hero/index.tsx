@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 import LogoCocktail from "../../../public/images/LogoCocktail.svg";
 import Close from "../../../public/images/Close.svg";
-import { post } from "../../services/api";
+import { post, useDevelopment } from "../../services/api";
 import Loader from "../Loader";
 
 const Counter = ({
@@ -60,7 +60,7 @@ const Counter = ({
 };
 
 const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
-  const ticketPrice = 8;
+  const ticketPrice = 6;
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(numberOfTickets);
   const [emailError, setEmailError] = useState(false);
@@ -68,7 +68,17 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [lastNameError, setLastNameError] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [soldOut, setSoldOut] = useState(true);
+  const [soldOut, setSoldOut] = useState(false);
+  const [timeout, setTimeout] = useState(false);
+
+  useEffect(() => {
+    if(new Date() < new Date(2022, 9, 10, 19, 30) && !useDevelopment){
+      setSoldOut(true);
+    } else {
+      setTimeout(false);
+      setSoldOut(false);
+    }
+  })
 
   const [formvalues, setFormvalues] = useState({
     naam: "",
@@ -80,6 +90,12 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   Modal.setAppElement("#__next");
 
   function openModal() {
+    // if(new Date() < new Date(2022, 9, 10, 19, 30)){
+    //   setTimeout(true);
+    // } else {
+    //   setTimeout(false);
+    //   setIsOpen(true);
+    // }
     setIsOpen(true);
   }
 
@@ -220,6 +236,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
           Bestel ticket
         </button>
       )}
+      {timeout && <p>De tickets zijn beschikbaar vanaf 19:30 uur.</p>}
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}
@@ -236,7 +253,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
               <Counter
                 setNumberOfTickets={setNewTicketNumber}
                 numberOfTickets={numberOfTickets}
-                maxNoOfTickets={50}
+                maxNoOfTickets={10}
               />
               <label className="c-orderform__label" htmlFor="name">
                 Voornaam
