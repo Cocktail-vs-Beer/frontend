@@ -60,7 +60,7 @@ const Counter = ({
 };
 
 const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
-  const ticketPrice = 6;
+  const ticketPrice = 7;
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(numberOfTickets);
   const [emailError, setEmailError] = useState(false);
@@ -71,14 +71,14 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [soldOut, setSoldOut] = useState(false);
   const [timeout, setTimeout] = useState(false);
 
-  // useEffect(() => {
-  //   if(new Date() < new Date(2022, 9, 10, 19, 30) && !useDevelopment){
-  //     setSoldOut(true);
-  //   } else {
-  //     setTimeout(false);
-  //     setSoldOut(false);
-  //   }
-  // })
+  useEffect(() => {
+    if(new Date() < new Date(2022, 8, 11, 19, 30, 0)){
+      setSoldOut(true);
+    } else {
+      setTimeout(false);
+      setSoldOut(false);
+    }
+  })
 
   const [formvalues, setFormvalues] = useState({
     naam: "",
