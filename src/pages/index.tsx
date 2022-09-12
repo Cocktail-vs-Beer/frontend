@@ -12,6 +12,7 @@ import path from "path";
 import { promises as fs } from "fs";
 import Sponsors from "../components/Sponsors";
 import getConfig from "next/config";
+import Head from 'next/head';
 import Waves from "../components/Waves";
 
 const lineup: Array<TLineup> = [
@@ -115,6 +116,9 @@ export default function Home({}: InferGetServerSidePropsType<
   const [numberOfTickets, setNumberOfTickets] = useState(1);
   return (
     <>
+      <Head>
+        <script defer data-domain="cocktailvsbeer.be" src="https://plausible.io/js/plausible.js"></script>
+      </Head>
       <div className="o-container">
         <Navbar />
         <Hero
