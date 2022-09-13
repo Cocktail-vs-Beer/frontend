@@ -1,9 +1,13 @@
+import Head from 'next/head';
 import Footer from "../components/Footer";
 import LogoCocktail from "../../public/images/LogoCocktail.svg";
 
 export default function ThankYou() {
   return (
     <>
+      <Head>
+        <script defer data-domain="cocktailvsbeer.be" src="https://plausible.io/js/plausible.js"></script>
+      </Head>
       <div className="o-container">
         <section className="c-hero o-row o-row--xl">
           <LogoCocktail className="c-hero__logo" />
