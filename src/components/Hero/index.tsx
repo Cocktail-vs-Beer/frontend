@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import * as Sentry from '@sentry/nextjs';
 import Modal from "react-modal";
 
 import LogoCocktail from "../../../public/images/LogoCocktail.svg";
@@ -194,7 +195,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
         }
       }
     } catch (err) {
-      console.error("CVB", err);
+      Sentry.captureException(err);      
       setError(
         "Er is een onverwachte fout opgetreden. Probeer het later opnieuw."
       );
