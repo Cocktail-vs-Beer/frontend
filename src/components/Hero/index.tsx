@@ -69,16 +69,16 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [lastNameError, setLastNameError] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [soldOut, setSoldOut] = useState(false);
+  const [soldOut, setSoldOut] = useState(true);
   const [timeout, setTimeout] = useState(false);
 
   useEffect(() => {
-    if(new Date() < new Date(2022, 8, 11, 19, 30, 0)){
-      setSoldOut(true);
-    } else {
-      setTimeout(false);
-      setSoldOut(false);
-    }
+    // if(new Date() < new Date(2022, 8, 11, 19, 30, 0)){
+    //   setSoldOut(true);
+    // } else {
+    //   setTimeout(false);
+    //   setSoldOut(false);
+    // }
   })
 
   const [formvalues, setFormvalues] = useState({
