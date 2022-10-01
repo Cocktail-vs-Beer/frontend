@@ -231,7 +231,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
         <h1 className="c-hero__date-date">1 OKTOBER 2022</h1>
       </div>
       {soldOut ? (
-        <button className="c-hero__cta">Bestel binnenkort</button>
+        <button className="c-hero__cta">Uitverkocht</button>
       ) : (
         <button className="c-hero__cta" onClick={openModal}>
           Bestel ticket
