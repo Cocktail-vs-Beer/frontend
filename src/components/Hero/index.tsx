@@ -69,7 +69,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [lastNameError, setLastNameError] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [soldOut, setSoldOut] = useState(false);
+  const [soldOut, setSoldOut] = useState(true);
   const [timeout, setTimeout] = useState(false);
 
   useEffect(() => {
