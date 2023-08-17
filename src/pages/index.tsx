@@ -17,10 +17,11 @@ import Waves from "../components/Waves";
 
 const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:30", name: "DJ contest winnaar" },
-  { timeslot: "22:30-00:00", name: "miles b2b tizzix" },
-  { timeslot: "00:00-02:00", name: "mc captain feat. lc lennert" },
-  { timeslot: "02:00-03:30", name: "thomassive" },
-  { timeslot: "03:30-04:30", name: "sïmplex" },
+  { timeslot: "22:30-00:00", name: "Two for you" },
+  { timeslot: "00:00-01:00", name: "Tola OG & Sven Van alboom" },
+  { timeslot: "01:00-02:00", name: "Sïmplex" },
+  { timeslot: "02:00-03:00", name: "Bibendum" },
+  { timeslot: "03:30-04:30", name: "Friendzone" },
 ];
 
 const questions: Array<TFAQ> = [
@@ -84,7 +85,7 @@ const sponsors = [
 
 const waves = [
   { name: "Wave 1", price: "€6" },
-  { name: "Wave 2", price: "€7" },
+  { name: "Wave 2", price: "€8" },
   { name: "Wave 3", price: "€9" },
 ];
 
@@ -128,7 +129,7 @@ export default function Home({}: InferGetServerSidePropsType<
         <Waves waves={waves} />
         <Lineup lineup={lineup} />
         <FAQ qas={questions} />
-        <Sponsors sponsors={sponsors} />
+        {/* <Sponsors sponsors={sponsors} /> */}
       </div>
       <Footer />
     </>
