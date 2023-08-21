@@ -228,7 +228,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
       <LogoCocktail className="c-hero__logo" />
       <div className="c-hero__date-container">
         <h1 className="c-hero__date-day">ZATERDAG</h1>
-        <h1 className="c-hero__date-date">7 OKTOBER 2022</h1>
+        <h1 className="c-hero__date-date">7 OKTOBER 2023</h1>
       </div>
       <button className="c-hero__cta">
         Tickets binnenkort verkrijgbaar
