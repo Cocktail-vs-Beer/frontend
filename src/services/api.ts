@@ -3,9 +3,6 @@ let useDevelopment =
   process.env.VERCEL_ENV === "development";
 let developEndpoint = "https://vozwcpjnhi.execute-api.eu-north-1.amazonaws.com";
 
-console.log("node_env", process.env.NODE_ENV);
-console.log("Hallo dev");
-
 if (process.browser) {
   // Check if we should use the development endpoint on the production website
   if (!useDevelopment) {
@@ -23,7 +20,7 @@ if (process.browser) {
 console.log(useDevelopment);
 const BASE_URL = useDevelopment
   ? developEndpoint
-  : "https://v082393a2g.execute-api.eu-west-3.amazonaws.com";
+  : "https://flnarjzwif.execute-api.eu-north-1.amazonaws.com";
 
 export type error = {
   errorKey: string;
