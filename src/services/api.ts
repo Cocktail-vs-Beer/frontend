@@ -1,4 +1,6 @@
-let useDevelopment = process.env.NODE_ENV === "development";
+let useDevelopment =
+  process.env.VERCEL_ENV === "preview" ||
+  process.env.VERCEL_ENV === "development";
 let developEndpoint = "https://vozwcpjnhi.execute-api.eu-north-1.amazonaws.com";
 
 console.log("node_env", process.env.NODE_ENV);
