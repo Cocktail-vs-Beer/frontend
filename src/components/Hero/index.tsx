@@ -225,11 +225,23 @@ const Hero = ({ numberOfTickets, setNumberOfTickets, wave }: any) => {
         <h1 className="c-hero__date-day">ZATERDAG</h1>
         <h1 className="c-hero__date-date">7 OKTOBER 2023</h1>
       </div>
-      <button className="c-hero__cta" onClick={openModal}>
-        {
-          wave.active ? "Bestel tickets" : "Binnenkort verkrijgbaar"
-        }
-      </button>
+      {
+        wave.active 
+        ? (
+          <button className="c-hero__cta" onClick={openModal}>
+            {
+              "Bestel tickets"
+            }
+          </button>
+        )
+          : (
+          <button className="c-hero__cta">
+            {
+              "Binnenkort verkrijgbaar"
+            }
+          </button>
+          )
+      }
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}
