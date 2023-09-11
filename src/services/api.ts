@@ -1,7 +1,7 @@
 let useDevelopment = process.env.NODE_ENV === "development";
 let developEndpoint = "https://vozwcpjnhi.execute-api.eu-north-1.amazonaws.com";
 
-console.log(developEndpoint);
+console.log("node_env", process.env.NODE_ENV);
 
 if (process.browser) {
   // Check if we should use the development endpoint on the production website
