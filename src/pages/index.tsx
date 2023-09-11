@@ -15,6 +15,8 @@ import getConfig from "next/config";
 import Head from 'next/head';
 import Waves from "../components/Waves";
 
+import { get } from '../services/api'; 
+
 const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:30", name: "DJ contest winnaar" },
   { timeslot: "22:30-00:00", name: "Two for you" },
@@ -103,15 +105,22 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       return imageProps;
     });
 
-    return { props: { sponsors: fileContents } };
+    const wave = { active: false, price: 0, startsAt: "2023-09-11T20:00:00.000Z" }
+    const [error, res ] = await get('/wave');
+    if(!error) {
+      wave.active = true;
+      wave.price = res.price;
+      wave.startsAt = res.startsAt;
+    }
+    
+
+    return { props: { sponsors: fileContents, wave } };
   } catch (error) {
     return { props: { sponsors: [] } };
   }
-
-  // Pass data to the page via props
 };
 
-export default function Home({}: InferGetServerSidePropsType<
+export default function Home({ wave }: InferGetServerSidePropsType<
   typeof getServerSideProps
 >) {
   const [numberOfTickets, setNumberOfTickets] = useState(1);
@@ -125,6 +134,7 @@ export default function Home({}: InferGetServerSidePropsType<
         <Hero
           setNumberOfTickets={setNumberOfTickets}
           numberOfTickets={numberOfTickets}
+          wave={wave}
         />
         <Waves waves={waves} />
         <Lineup lineup={lineup} />

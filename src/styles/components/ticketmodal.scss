@@ -32,12 +32,19 @@
 
 @include md {
     .c-ticketmodal {
-        top: 15%;
-        left: 15%;
-        right: 15%;
-        bottom: 15%;
+        // top: 15%;
+        // left: 15%;
+        // right: 15%;
+        // bottom: 15%;
+        width: 80%;
+        top: 50%;
+        bottom: unset;
+        right: unset;
+        left: 50%;
+        transform: translate(-50%,-50%);
     }
 }
+
 // @include lg {
 //     .c-ticketmodal {
 //         top: 20%;

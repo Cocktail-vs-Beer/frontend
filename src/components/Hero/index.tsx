@@ -60,11 +60,12 @@ const Counter = ({
   );
 };
 
-const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
-  const ticketPrice = 9;
+const Hero = ({ numberOfTickets, setNumberOfTickets, wave }: any) => {
+  const ticketPrice = wave.price;
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(numberOfTickets);
   const [emailError, setEmailError] = useState(false);
+  const [emailCheckError, setEmailCheckError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
   const [error, setError] = useState("");
@@ -72,18 +73,10 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   const [soldOut, setSoldOut] = useState(true);
   const [timeout, setTimeout] = useState(false);
 
-  useEffect(() => {
-    // if(new Date() < new Date(2022, 8, 11, 19, 30, 0)){
-    //   setSoldOut(true);
-    // } else {
-    //   setTimeout(false);
-    //   setSoldOut(false);
-    // }
-  })
-
   const [formvalues, setFormvalues] = useState({
     naam: "",
     email: "",
+    emailCheck: "",
     lastName: "",
   });
   const [buttonString, setButtonString] = useState("");
@@ -91,12 +84,6 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
   Modal.setAppElement("#__next");
 
   function openModal() {
-    // if(new Date() < new Date(2022, 9, 10, 19, 30)){
-    //   setTimeout(true);
-    // } else {
-    //   setTimeout(false);
-    //   setIsOpen(true);
-    // }
     setIsOpen(true);
   }
 
@@ -113,6 +100,8 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
       setEmailError(false);
     } else if (name === "lastName") {
       setLastNameError(false);
+    } else if(name === "emailCheck") {
+      setEmailCheckError(false);
     }
   }
 
@@ -138,6 +127,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
     const firstName = formvalues.naam.trim();
     const lastName = formvalues.lastName.trim();
     const email = formvalues.email.trim();
+    const emailCheck = formvalues.emailCheck.trim();
 
     if (!firstName || firstName.length < 3 || firstName.length > 30) {
       setNameError(true);
@@ -149,6 +139,11 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
     }
     if (!email || !isValidEmail(email)) {
       setEmailError(true);
+      valid = false;
+    }
+    if(!emailCheck || emailCheck !== email) {
+      setEmailCheckError(true);
+      setError("e-mail komt niet overeen")
       valid = false;
     }
 
@@ -230,8 +225,10 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
         <h1 className="c-hero__date-day">ZATERDAG</h1>
         <h1 className="c-hero__date-date">7 OKTOBER 2023</h1>
       </div>
-      <button className="c-hero__cta">
-        Tickets binnenkort verkrijgbaar
+      <button className="c-hero__cta" onClick={openModal}>
+        {
+          wave.active ? "Bestel tickets" : "Binnenkort verkrijgbaar"
+        }
       </button>
       <Modal
         isOpen={isOpen}
@@ -288,6 +285,18 @@ const Hero = ({ numberOfTickets, setNumberOfTickets }: any) => {
                   name="email"
                   value={formvalues.email}
                   style={emailError ? { borderColor: "#e72060" } : {}}
+                  onChange={(e) => handleInputValueChange(e)}
+                />
+              </label>
+              <label htmlFor="email" className="c-orderform__label">
+                Bevestig e-mail
+                <br></br>
+                <input
+                  className="c-orderform__input"
+                  type="email"
+                  name="emailCheck"
+                  value={formvalues.emailCheck}
+                  style={emailCheckError ? { borderColor: "#e72060" } : {}}
                   onChange={(e) => handleInputValueChange(e)}
                 />
               </label>
