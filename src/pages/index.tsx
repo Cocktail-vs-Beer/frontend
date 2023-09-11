@@ -92,6 +92,7 @@ const waves = [
 ];
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const wave = { active: false, price: 0, startsAt: "2023-09-11T20:00:00.000Z" }
   try {
     const dirRelativeToPublicFolder = "assets/sponsors";
 
@@ -105,18 +106,19 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       return imageProps;
     });
 
-    const wave = { active: false, price: 0, startsAt: "2023-09-11T20:00:00.000Z" }
     const [error, res ] = await get('/wave');
     if(!error) {
       wave.active = true;
       wave.price = res.price;
       wave.startsAt = res.startsAt;
     }
+
+    console.log(wave);
     
 
     return { props: { sponsors: fileContents, wave } };
   } catch (error) {
-    return { props: { sponsors: [] } };
+    return { props: { sponsors: [], wave } };
   }
 };
 
