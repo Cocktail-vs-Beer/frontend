@@ -108,7 +108,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
     const [error, res ] = await get('/wave');
     if(!error) {
-      wave.active = res.active;
+      wave.active = false;
       wave.price = res.price;
       wave.startsAt = res.startsAt;
     }
