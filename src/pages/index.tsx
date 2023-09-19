@@ -49,6 +49,11 @@ const questions: Array<TFAQ> = [
     answer:
       "Ja, je kan op Cocktail vs Beer betalen met bankkaart en met Payconiq.",
   },
+  {
+    question: "Help, ik heb geen bevestigingsmail ontvangen.",
+    answer:
+      "Als je geen bevestigingsmail hebt ontvangen met je tickets, kijk dan zeker eerst eens in je spam folder. Nog steeds niets gevonden? Stuur ons een berichtje via sociale media en we helpen je graag verder.",
+  },
 ];
 
 const sponsors = [
