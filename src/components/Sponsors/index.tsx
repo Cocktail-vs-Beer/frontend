@@ -1,5 +1,5 @@
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 interface sponsorProps {
   sponsors: Array<{
@@ -8,32 +8,33 @@ interface sponsorProps {
 }
 
 const Sponsors = ({ sponsors }: sponsorProps) => {
-  if (sponsors && sponsors.length > 0) {
-    return (
-      <section className="c-lineup o-row">
-        <h2 className="c-lineup__title">Sponsors</h2>
-        <ImageList className="c-sponsors" variant="masonry" cols={2} gap={16}>
-          {sponsors ? (
-            sponsors.map((sponsor, index) => (
-              <ImageListItem key={`sponsor-${index}`}>
-                <img
-                  className="c-sponsors__img"
-                  src={sponsor.src}
-                  srcSet={sponsor.src}
-                  alt={`sponsor-${index}`}
-                  loading="lazy"
-                />
-              </ImageListItem>
-            ))
-          ) : (
-            <></>
-          )}
-        </ImageList>
-      </section>
-    );
-  } else {
-    return <></>;
-  }
+  return (
+    <section className="c-lineup o-row">
+      <h2 className="c-lineup__title">Onze sponsors</h2>
+      <Carousel className="c-sponsors" 
+        infiniteLoop={true}
+        interval={3000}
+        transitionTime={500}
+        showThumbs={false}
+        autoPlay={true}
+        showArrows={false}
+        centerSlidePercentage={40}
+        centerMode={true}
+        showStatus={false}
+      >
+        {sponsors.map((sponsor, index) => (
+            <img
+              className="c-sponsors__img"
+              src={sponsor.src}
+              srcSet={sponsor.src}
+              alt={`sponsor-${index}`}
+              loading="lazy"
+              key={index}
+            />
+        ))}
+      </Carousel>
+    </section>
+  );
 };
 
 export default Sponsors;

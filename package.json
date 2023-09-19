@@ -17,6 +17,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-modal": "^3.14.3",
+    "react-responsive-carousel": "^3.2.23",
     "sass": "^1.38.0"
   },
   "devDependencies": {
