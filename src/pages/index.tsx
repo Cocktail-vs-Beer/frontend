@@ -87,7 +87,7 @@ const sponsors = [
 
 const waves = [
   { name: "Wave 1", price: "sold out" },
-  { name: "Wave 2", price: "€8" },
+  { name: "Wave 2", price: "sold out" },
   { name: "Wave 3", price: "€9" },
 ];
 
