@@ -237,7 +237,7 @@ const Hero = ({ numberOfTickets, setNumberOfTickets, wave }: any) => {
           : (
           <button className="c-hero__cta">
             {
-              "Binnenkort verkrijgbaar"
+              "Tot volgend jaar!"
             }
           </button>
           )

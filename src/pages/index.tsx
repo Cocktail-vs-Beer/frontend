@@ -111,15 +111,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       return imageProps;
     });
 
-    const [error, res ] = await get('/wave');
-    if(!error) {
-      wave.active = res.active;
-      wave.price = res.price;
-      wave.startsAt = res.startsAt;
-    }
-
-    console.log(wave);
-    
+    // const [error, res ] = await get('/wave');
+    // if(!error) {
+    //   wave.active = res.active;
+    //   wave.price = res.price;
+    //   wave.startsAt = res.startsAt;
+    // }
 
     return { props: { sponsors: fileContents, wave } };
   } catch (error) {
