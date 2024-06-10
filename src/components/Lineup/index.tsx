@@ -1,11 +1,17 @@
-import React, { Fragment, FunctionComponent } from "react";
-import { TLineup } from "../../types/Lineup";
+import type { TLineup } from "../../types/Lineup";
+import { Fragment } from "react";
+import "../../styles/components/lineup.scss";
 
-interface LineupProps {
-  lineup: Array<TLineup>;
-}
+const lineup: Array<TLineup> = [
+  { timeslot: "21:00-22:30", name: "DJ contest winnaar" },
+  { timeslot: "22:30-00:00", name: "Two for you" },
+  { timeslot: "00:00-01:00", name: "Tola OG & Sven Van alboom" },
+  { timeslot: "01:00-02:00", name: "Sïmplex" },
+  { timeslot: "02:00-03:00", name: "Bibendum" },
+  { timeslot: "03:30-04:30", name: "Friendzone" },
+];
 
-const Lineup: FunctionComponent<LineupProps> = ({ lineup }) => {
+export default function Lineup() {
   return (
     <section id="lineup" className="c-lineup o-row">
       <h2 className="c-lineup__title">Line up</h2>
@@ -21,5 +27,3 @@ const Lineup: FunctionComponent<LineupProps> = ({ lineup }) => {
     </section>
   );
 };
-
-export default Lineup;

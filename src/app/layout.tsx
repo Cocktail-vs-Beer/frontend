@@ -1,4 +1,6 @@
 import Navbar from "../components/Navbar"
+import Footer from "../components/Footer";
+
 import '../styles/settings/_mixins.scss';
 import '../styles/settings/colors.scss';
 import '../styles/settings/fonts.scss';
@@ -22,6 +24,7 @@ export default function RootLayout({
           <Navbar/>
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   )

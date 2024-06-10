@@ -7,7 +7,13 @@ interface WaveProps {
   }>;
 }
 
-const Waves: FunctionComponent<WaveProps> = ({ waves }) => {
+const waves = [
+  { name: "Wave 1", price: "€6" },
+  { name: "Wave 2", price: "€8" },
+  { name: "Wave 3", price: "€9" },
+];
+
+export default function Waves() {
   return (
     <section id="lineup" className="c-lineup o-row">
       <h2 className="c-lineup__title">Waves</h2>
@@ -23,5 +29,3 @@ const Waves: FunctionComponent<WaveProps> = ({ waves }) => {
     </section>
   );
 };
-
-export default Waves;

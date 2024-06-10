@@ -2,13 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__title {
-    }
+
     &-container {
         display: grid;
         grid-template-areas: "timeslot divider name";
-        &:nth-last-child(-n + 3) {
-        }
     }
 
     &__timeslot {
@@ -19,7 +16,6 @@
         border-left: 2px solid white;
     }
     &__name {
-        // margin-left: 1em;
         padding: 0 0 1.5em 1em;
         text-align: right;
     }
