@@ -24,17 +24,14 @@
     font-size: 1rem;
 }
 
-@include md {
-    .c-navbar {
-        max-width: 1120px;
-    }
-}
-@include lg {
-    .c-navbar {
-    }
-}
-@include xl {
-    .c-navbar {
-        max-width: 1600px;
-    }
-}
+// @include md {
+//     .c-navbar {
+//         max-width: 1120px;
+//     }
+// }
+//
+// @include xl {
+//     .c-navbar {
+//         max-width: 1600px;
+//     }
+// }

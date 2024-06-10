@@ -1,14 +1,6 @@
-// const { withSentryConfig } = require('@sentry/nextjs');
+const path = require("path");
 
 module.exports = {
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-
-    return config;
-  },
   // i18n: {
   //   // These are all the locales you want to support in
 
@@ -27,6 +19,9 @@ module.exports = {
   //     },
   //   ],
   // },
+  sassOptions: {
+    includePaths: [path.join(__dirname), 'src/styles']
+  }
 };
 
 // const sentryWebpackPluginOptions = {

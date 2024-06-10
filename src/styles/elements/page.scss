@@ -1,3 +1,6 @@
+@import "../settings/colors.scss";
+@import "../settings/_mixins.scss";
+
 html {
   background: map-get($map: $primary-colors, $key: blue500);
   scroll-behavior: smooth;
