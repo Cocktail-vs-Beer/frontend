@@ -223,7 +223,7 @@ export default function Hero () {
       <div className="c-hero__date-container">
         <h2 className="c-hero__date-day">ZATERDAG</h2>
         <h2 className="c-hero__date-date">5 OKTOBER 2024</h2>
-        <button className="c-hero__cta">Bestel tickets</button>
+        <button className="c-hero__cta">Tickets binnenkort</button>
       </div>
       {/* <Modal
         isOpen={isOpen}
