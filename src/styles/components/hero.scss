@@ -7,7 +7,6 @@
   align-items: center;
   &__logo {
     width: 70%;
-    margin: auto;
   }
   &__cta {
     @extend .o-button-reset;
@@ -30,7 +29,6 @@
     font-family: "Moon Get";
     margin-left: auto;
     margin-right: auto;
-    line-height: 1rem;
   }
   &__date-date {
     margin-top: 0;

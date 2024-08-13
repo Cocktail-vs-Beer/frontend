@@ -3,12 +3,13 @@ import { Fragment } from "react";
 import "../../styles/components/lineup.scss";
 
 const lineup: Array<TLineup> = [
-  { timeslot: "21:00-22:30", name: "DJ contest winnaar" },
-  { timeslot: "22:30-00:00", name: "Two for you" },
-  { timeslot: "00:00-01:00", name: "Tola OG & Sven Van alboom" },
-  { timeslot: "01:00-02:00", name: "Sïmplex" },
-  { timeslot: "02:00-03:00", name: "Bibendum" },
-  { timeslot: "03:30-04:30", name: "Friendzone" },
+  { timeslot: "21:00-22:00", name: "DJ contest winnaar" },
+  { timeslot: "22:00-23:30", name: "Two for you" },
+  { timeslot: "23:30-00:30", name: "Sïmplex" },
+  { timeslot: "00:30-01:30", name: "Karakals" },
+  { timeslot: "01:30-02:30", name: "Magik ft Jaël Ost" },
+  { timeslot: "02:30-03:30", name: "Proudmich" },
+  { timeslot: "03:30-04:30", name: "Studio Chewie" },
 ];
 
 export default function Lineup() {
@@ -16,14 +17,13 @@ export default function Lineup() {
     <section id="lineup" className="c-lineup o-row">
       <h2 className="c-lineup__title">Line up</h2>
       <div className="c-lineup-container">
-	<p>Binnenkort meer</p>
-        {/* lineup.map(({ timeslot, name }, index) => (
+        { lineup.map(({ timeslot, name }, index) => (
           <Fragment key={`lineup-${index}`}>
             <p className="c-lineup__timeslot">{timeslot}</p>
             <div className="c-lineup__divider" />
             <p className="c-lineup__name">{name}</p>
           </Fragment>
-        ))*/}
+        ))}
       </div>
     </section>
   );
