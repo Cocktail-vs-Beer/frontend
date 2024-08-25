@@ -1,9 +1,8 @@
-import "../../styles/components/footer.scss";
 
 const Footer = () => {
   return (
-    <footer className={"c-footer__container"}>
-      <h6 className={"c-footer__text"}>Made with 🍸 and 🍺</h6>
+    <footer className="text-center py-4 bg-[#0d0b1a]">
+      <h6 className="font-sans font-light">Made with 🍸 and 🍺</h6>
     </footer>
   );
 };

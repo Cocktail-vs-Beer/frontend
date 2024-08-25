@@ -1,11 +1,10 @@
 // import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import '../../styles/components/hero.scss';
 
 import LogoCocktail from "../../../public/images/LogoCocktail.svg";
-import Close from "../../../public/images/Close.svg";
-import { post, useDevelopment } from "../../services/api";
-import Loader from "../Loader";
+// import Close from "../../../public/images/Close.svg";
+// import { post, useDevelopment } from "../../services/api";
+// import Loader from "../Loader";
 
 // const Counter = ({
 //   setNumberOfTickets,
@@ -218,12 +217,13 @@ export default function Hero () {
   // }, [isOpen]);
 
   return (
-    <section className="c-hero">
-      <Image className="c-hero__logo" src="images/LogoCocktail.svg" alt="Logo Cocktail vs Beer" width={350} height={400} ></Image>
-      <div className="c-hero__date-container">
-        <h2 className="c-hero__date-day">ZATERDAG</h2>
-        <h2 className="c-hero__date-date">5 OKTOBER 2024</h2>
-        <button className="c-hero__cta">Tickets binnenkort</button>
+    
+    <section className="flex flex-col mt-16 justify-center items-center">
+      <Image className="md:w-[500px] w-[70%]" src="images/LogoCocktail.svg" alt="Logo Cocktail vs Beer" width={600} height={400} ></Image>
+      <div className="text-center text-3xl mt-6">
+        <h2 className="font-moon">ZATERDAG</h2>
+        <h2 className="font-moon">5 OKTOBER 2024</h2>
+        <button className="font-sans font-bold text-base leading-normal bg-primary py-4 px-6 rounded-md mt-8">Tickets binnenkort</button>
       </div>
       {/* <Modal
         isOpen={isOpen}

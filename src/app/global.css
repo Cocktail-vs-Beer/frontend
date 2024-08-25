@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Leo Rounded";
+    font-style: normal;
+    font-weight: light;
+    src: local("Leo Rounded Light"), url("./fonts/LeoRounded-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Leo Rounded";
+    font-style: normal;
+    font-weight: bold;
+    src: local("Leo Rounded Bold"), url("./fonts/LeoRounded-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Comfortaa Light";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Comfortaa Light"), url("./fonts/Comfortaa-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Moon Get";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Moon Get"), url("./fonts/MoonGet.woff") format("woff");
+}
+
+html {
+    font-family: 'Leo Rounded', sans-serif;
+}

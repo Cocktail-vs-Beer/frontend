@@ -1,6 +1,4 @@
 import type { TLineup } from "../../types/Lineup";
-import { Fragment } from "react";
-import "../../styles/components/lineup.scss";
 
 const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:30", name: "DJ contest winnaar" },

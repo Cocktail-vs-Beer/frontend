@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent } from "react";
+import React, { Fragment } from "react";
 
 interface WaveProps {
   waves: Array<{
@@ -15,9 +15,9 @@ const waves = [
 
 export default function Waves() {
   return (
-    <section id="lineup" className="c-lineup o-row">
-      <h2 className="c-lineup__title">Waves</h2>
-      <div className="c-lineup-container">
+    <section id="lineup" className="text-center">
+      <h2 className="text-3xl font-sans font-bold">Waves</h2>
+      <div className="">
         {waves.map(({ name, price }, index) => (
           <Fragment key={`lineup-${index}`}>
             <p className="c-lineup__timeslot">{name}</p>

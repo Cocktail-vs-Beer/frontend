@@ -1,11 +1,6 @@
+import './global.css'
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
-
-import '../styles/settings/_mixins.scss';
-import '../styles/settings/colors.scss';
-import '../styles/settings/fonts.scss';
-import '../styles/objects/container.scss';
-import '../styles/elements/page.scss';
 
 export const metadata = {
   title: 'Cocktail vs Beer',
@@ -18,11 +13,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className='bg-secondary text-white font-sans font-light scroll-smooth'>
       <body>
-        <div className="o-container">
+        <div className='my-8 mx-4'>
           <Navbar/>
-          {children}
+          <div className='space-y-8'>
+            {children}
+          </div>
         </div>
         <Footer />
       </body>
