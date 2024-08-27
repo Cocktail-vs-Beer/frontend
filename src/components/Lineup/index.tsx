@@ -6,8 +6,8 @@ const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:00", name: "DJ contest winnaar" },
   { timeslot: "22:00-23:30", name: "Two for you" },
   { timeslot: "23:30-00:30", name: "Sïmplex" },
-  { timeslot: "00:30-01:30", name: "Karakals" },
-  { timeslot: "01:30-02:30", name: "Magik ft Jaël Ost" },
+  { timeslot: "00:30-01:30", name: "KARAKALS" },
+  { timeslot: "01:30-02:30", name: "Jaël Ost & Magik" },
   { timeslot: "02:30-03:30", name: "Proudmich" },
   { timeslot: "03:30-04:30", name: "Studio Chewie" },
 ];
