@@ -17,7 +17,7 @@ export default function RootLayout({
       <body>
         <div className='my-8 mx-4'>
           <Navbar/>
-          <div className='space-y-8'>
+          <div className='space-y-20'>
             {children}
           </div>
         </div>

@@ -217,13 +217,12 @@ export default function Hero () {
   // }, [isOpen]);
 
   return (
-    
     <section className="flex flex-col mt-16 justify-center items-center">
-      <Image className="md:w-[500px] w-[70%]" src="images/LogoCocktail.svg" alt="Logo Cocktail vs Beer" width={600} height={400} ></Image>
-      <div className="text-center text-3xl mt-6">
+      <Image className="md:w-[450px] w-[70%]" src="images/LogoCocktail.svg" alt="Logo Cocktail vs Beer" width={600} height={400} ></Image>
+      <div className="text-center text-4xl mt-6">
         <h2 className="font-moon">ZATERDAG</h2>
         <h2 className="font-moon">5 OKTOBER 2024</h2>
-        <button className="font-sans font-bold text-base leading-normal bg-primary py-4 px-6 rounded-md mt-8">Tickets binnenkort</button>
+        <button className="font-sans font-bold text-2xl leading-none bg-primary py-6 px-9 rounded mt-8">Tickets binnenkort</button>
       </div>
       {/* <Modal
         isOpen={isOpen}

@@ -1,6 +1,4 @@
-import { TFAQ } from "../../types/FAQ";
-import "../../styles/components/faq.scss";
-import "../../styles/objects/rows.scss"
+import { TFAQ } from "../../lib/types/FAQ";
 
 const questions: Array<TFAQ> = [
   {
@@ -34,12 +32,12 @@ const questions: Array<TFAQ> = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="c-faq o-row o-row--xl">
-      <h2 className="c-faq__title">faq</h2>
+    <section id="faq" className="container mx-auto w-2/5">
+      <h2 className="text-4xl text-center font-sans font-bold mb-6">faq</h2>
       {questions.map(({ question, answer }, index) => (
-        <details key={index} className="c-faq__question">
-          <summary className="c-faq__question-title">{question}</summary>
-          <p className="c-faq__question-answer">{answer}</p>
+        <details key={index} className="border font-comfortaa font-light px-8 py-4 mb-4">
+          <summary className="text-xl">{question}</summary>
+          <p className="mt-4">{answer}</p>
         </details>
       ))}
     </section>
