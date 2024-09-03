@@ -1,4 +1,5 @@
 import { TFAQ } from "../../lib/types/FAQ";
+import Title from '../Title';
 
 const questions: Array<TFAQ> = [
   {
@@ -32,14 +33,16 @@ const questions: Array<TFAQ> = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="container mx-auto w-2/5">
-      <h2 className="text-4xl text-center font-sans font-bold mb-6">faq</h2>
+    <section id="faq" className="text-center">
+      <Title>FAQ</Title>
+      <div className="container mx-auto w-2/5 mt-8">
       {questions.map(({ question, answer }, index) => (
-        <details key={index} className="border font-comfortaa font-light px-8 py-4 mb-4">
+        <details key={index} className="border font-light px-8 py-4 mb-4">
           <summary className="text-xl">{question}</summary>
           <p className="mt-4">{answer}</p>
         </details>
       ))}
+      </div>
     </section>
   );
 };

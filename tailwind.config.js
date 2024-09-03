@@ -76,7 +76,9 @@ module.exports = {
       fontFamily: {
         sans: ['Leo Rounded', 'sans-serif'],
         moon: ['Moon Get'],
-        comfortaa: ['Comfortaa']
+        comfortaa: ['Comfortaa'],
+        trainone: ['Train One', 'system-ui'],
+        montserrat: ['Montserrat', 'sans-serif']
       }
     },
   },

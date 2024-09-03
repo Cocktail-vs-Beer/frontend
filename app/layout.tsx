@@ -13,11 +13,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='bg-secondary text-white font-sans font-light scroll-smooth'>
-      <body>
+    <html lang="en" className={`bg-secondary text-white font-montserrat scroll-smooth`}>
+      <body> 
         <div className='my-8 mx-4'>
           <Navbar/>
-          <div className='space-y-20'>
+          <div className='space-y-28'>
             {children}
           </div>
         </div>

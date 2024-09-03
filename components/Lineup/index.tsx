@@ -1,5 +1,6 @@
 import { Separator } from "../ui/separator";
 import type { TLineup } from "../../lib/types/Lineup";
+import Title from '../Title';
 
 const lineup: Array<TLineup> = [
   { timeslot: "21:00-22:00", name: "DJ contest winnaar" },
@@ -14,7 +15,7 @@ const lineup: Array<TLineup> = [
 export default function Lineup() {
   return (
     <section id="lineup" className="text-center">
-      <h2 className="text-4xl font-sans font-bold">Line up</h2>
+      <Title>Line up</Title>
       <div className="flex mt-6 justify-center">
         <div>
           {lineup.map(({ timeslot }, index) => (
