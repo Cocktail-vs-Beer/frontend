@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import type { TLineup } from "../../lib/types/Lineup";
 import Title from '../Title';
 import './style.css';
 
-const lineup: Array<TLineup> = [
+const lineup = [
   { timeslot: "21:00-22:00", name: "DJ contest winnaar" },
   { timeslot: "22:00-23:30", name: "Two for you" },
   { timeslot: "23:30-00:30", name: "Sïmplex" },
