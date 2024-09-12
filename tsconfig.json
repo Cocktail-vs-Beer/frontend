@@ -22,7 +22,7 @@
       {
         "name": "next"
       }
-    ]
+    ],
   },
   "include": [
     "next-env.d.ts",
@@ -32,6 +32,6 @@
   ],
   "exclude": [
     "node_modules",
-    "src/pages_old/**/*.tsx"
+    "src"
   ]
 }

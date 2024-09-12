@@ -1,6 +1,9 @@
 const path = require("path");
 
 module.exports = {
+  experimental: {
+    missingSuspenseWithCSRBailout: false
+  }
   // i18n: {
   //   // These are all the locales you want to support in
 
@@ -19,9 +22,6 @@ module.exports = {
   //     },
   //   ],
   // },
-  sassOptions: {
-    includePaths: [path.join(__dirname), 'src/styles']
-  }
 };
 
 // const sentryWebpackPluginOptions = {

@@ -1,0 +1,16 @@
+.grid-element-container {
+  padding-bottom: 100%;
+  width: 100%;
+  height: 0;
+}
+
+.grid-element {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

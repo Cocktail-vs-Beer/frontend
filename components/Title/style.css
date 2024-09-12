@@ -1,0 +1,10 @@
+.title::after {
+  left: 50%;
+  top: 0;
+  transform: translate(-46%, -41%);
+  position: absolute;
+  z-index: -1;
+  content: attr(title);
+  background: linear-gradient(90deg, #E72060, #55BEDD);
+  background-clip: text;
+}
