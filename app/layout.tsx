@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`bg-secondary text-white font-montserrat scroll-smooth`}>
       <body> 
-        <div className='my-8 mx-4 min-h-screen'>
+        <div className='my-8 mx-4 min-h-[calc(100vh-120px)]'>
           <Navbar/>
           <div className='space-y-28'>
             {children}
