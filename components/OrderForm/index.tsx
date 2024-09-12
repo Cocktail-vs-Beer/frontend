@@ -25,7 +25,7 @@ const formSchema = z.object({
   }),
   email: z.string({ message: "Verplicht veld." }).email({ message: "Geen geldig email adres." }),
   email2: z.string({ message: "Verplicht veld." }).email({ message: "Geen geldig email adres" }),
-  quantity: z.number({ message: "Verplicht veld." }).min(1, { message: "Je moet minstens 1 ticket kopen." }).max(10, { message: "Je kan maximaal 10 tickets kopen per bestelling." })
+  quantity: z.coerce.number().min(1, { message: "Je moet minstens 1 ticket kopen." }).max(10, { message: "Je kan maximaal 10 tickets kopen per bestelling." })
 })
 
 type OrderFormProps = {
@@ -122,7 +122,7 @@ export default function OrderForm(props: OrderFormProps) {
             <FormItem>
               <FormLabel>Aantal</FormLabel>
               <FormControl>
-                <Input max={10} min={1} type="number" {...field} />
+                <Input max={10} min={1} type="number" {...field}  />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -8,7 +8,7 @@ export default function Page() {
   const refDate = new Date("2024-09-12T18:00:00");
   const searchParams = useSearchParams();
 
-  console.log(refDate)
+  console.log(refDate, new Date())
   if (refDate > new Date() && !(searchParams.get("debug") === 'true')) {
     return(
       <Suspense fallback={<Loading />}>
