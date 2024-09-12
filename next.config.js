@@ -1,6 +1,9 @@
 const path = require("path");
 
 module.exports = {
+  experimental: {
+    missingSuspenseWithCSRBailout: false
+  }
   // i18n: {
   //   // These are all the locales you want to support in
 
