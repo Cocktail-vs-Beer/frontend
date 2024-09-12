@@ -35,7 +35,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="text-center">
       <Title>FAQ</Title>
-      <div className="container mx-auto w-2/5 mt-8">
+      <div className="md:container mx-auto md:w-1/2 w-full mt-16 md:mt-24">
       {questions.map(({ question, answer }, index) => (
         <details key={index} className="border font-light px-8 py-4 mb-4">
           <summary className="text-xl">{question}</summary>
