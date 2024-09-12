@@ -32,10 +32,6 @@
   ],
   "exclude": [
     "node_modules",
-<<<<<<< HEAD
-    "src"
-=======
     "src/pages_old/**/*.tsx"
->>>>>>> a30a67b8eccf411ad12b9b4fbe06d50504b5676d
   ]
 }
