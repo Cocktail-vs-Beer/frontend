@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <Suspense fallback={<Loading />}>
       <div className="container mx-auto md:w-1/3 mt-16">
-        <OrderForm price={6}/> 
+        <OrderForm price={8}/> 
       </div>
     </Suspense>
   )

@@ -26,7 +26,7 @@ export default function Lineup() {
             <p className="font-trainone uppercase text-xl bg-clip-text bg-gradient-to-r from-white to-lightblue text-transparent w-fit">Proudmich</p>
             <p>02:30 - 03:30</p>
           </div>
-          <div className="grow basis-0 grid-element sm:h-auto h-[180px]">
+          <div className="grow basis-0 grid-element sm:h-auto h-[180px] bg-[url('/images/simplex.jpg')]">
             <p className="font-trainone uppercase text-xl bg-clip-text bg-gradient-to-r from-white to-lightblue text-transparent w-fit">Sïmplex</p>
             <p>23:30 - 00:30</p>
           </div>
