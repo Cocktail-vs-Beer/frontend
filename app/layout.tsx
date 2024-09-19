@@ -1,7 +1,7 @@
 import './global.css'
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
-import Head from 'next/head';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Cocktail vs Beer',
@@ -15,9 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`bg-secondary text-white font-montserrat scroll-smooth`}>
-      <Head>
-        <script defer data-domain="cocktailvsbeer.be" src="https://analytics.cocktailvsbeer.be/js/script.js"></script>
-      </Head>
+      <Script defer data-domain="cocktailvsbeer.be" src="https://analytics.cocktailvsbeer.be/js/script.js" />
       <body> 
         <div className='my-8 mx-4 min-h-[calc(100vh-120px)]'>
           <Navbar/>
