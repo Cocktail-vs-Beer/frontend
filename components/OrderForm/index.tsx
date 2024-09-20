@@ -131,7 +131,7 @@ export default function OrderForm(props: OrderFormProps) {
         <FormMessage>{apiError}</FormMessage>
         <Button
           disabled={form.formState.isSubmitting}
-          className="rounded-lg font-bold hover:bg-primary bg-primary w-full"
+          className="rounded-lg font-bold hover:bg-primary bg-primary w-full plausible-event-name=Order"
           type="submit">Betaal € {(form.watch("quantity") || 1) * props.price},00</Button>
       </form>
     </Form>

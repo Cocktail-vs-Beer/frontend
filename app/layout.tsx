@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`bg-secondary text-white font-montserrat scroll-smooth`}>
       <Script defer data-domain="cocktailvsbeer.be" src="https://analytics.cocktailvsbeer.be/js/script.js" />
+      <Script defer data-domain="cocktailvsbeer.be" src="https://analytics.cocktailvsbeer.be/js/script.tagged-events.js"/>
       <body> 
         <div className='my-8 mx-4 min-h-[calc(100vh-120px)]'>
           <Navbar/>
