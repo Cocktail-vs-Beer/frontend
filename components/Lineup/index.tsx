@@ -42,8 +42,8 @@ export default function Lineup() {
             <p className="font-trainone uppercase text-xl bg-clip-text bg-gradient-to-r from-white to-lightblue text-transparent w-fit">Studio chewie</p>
             <p>03:30 - 04:30</p>
           </div>
-          <div className="grow basis-0 grid-element sm:h-auto h-[180px]">
-            <p className="font-trainone uppercase text-xl bg-clip-text bg-gradient-to-r from-white to-lightblue text-transparent w-fit">DJ contest</p>
+          <div className="grow basis-0 grid-element sm:h-auto h-[180px] bg-[url('/images/tegel.jpg')]">
+            <p className="font-trainone uppercase text-xl bg-clip-text bg-gradient-to-r from-white to-lightblue text-transparent w-fit">DJ tegel</p>
             <p>21:00 - 22:00</p>
           </div>
           <div className="basis-0 grow sm:h-auto h-[180px] text-xl uppercase flex items-center justify-center flex-col bg-gradient-to-br from-lightblue to-primary">
