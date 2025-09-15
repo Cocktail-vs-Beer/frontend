@@ -7,7 +7,7 @@ export type error = {
 
 async function post(
   endpoint: string,
-  body: object
+  body: object,
 ): Promise<[error: error | null, data: any | null]> {
   const resp = await fetch(`${BASE_URL}${endpoint}`, {
     method: "POST",
@@ -21,23 +21,20 @@ async function post(
 }
 
 async function get(
-  endpoint: string
+  endpoint: string,
 ): Promise<[error: error | null, data: any | null]> {
   const resp = await fetch(`${BASE_URL}${endpoint}`);
   return processResponse(resp);
 }
 
 async function processResponse(
-  response: Response
+  response: Response,
 ): Promise<[error: error | null, data: any | null]> {
   const jsonResponse = await response.json();
 
-  if (response.ok) return [null, jsonResponse.data];
-
-  if (jsonResponse.error || typeof jsonResponse.error !== "undefined")
-    return [jsonResponse.error, null];
-
-  return [null, null];
+  console.log(jsonResponse);
+  if (response.ok) return [null, jsonResponse];
+  else return [jsonResponse, null];
 }
 
 export { post, get };

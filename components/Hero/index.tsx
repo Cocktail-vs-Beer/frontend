@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CTAButton } from "../CTA";
 
 export default function Hero() {
   return (
@@ -10,11 +11,17 @@ export default function Hero() {
         width={600}
         height={400}
       ></Image>
-      <div className="text-center text-4xl mt-12">
+      <div className="text-center text-4xl mt-12 space-y-4">
         <h2 className="font-trainone text-5xl md:text-6xl">ZATERDAG</h2>
         <h2 className="font-trainone text-4xl md:text-6xl md:mt-6 mt-2">
           4 OKTOBER 2025
         </h2>
+        {/*<button className="font-sans font-bold text-2xl leading-none bg-primary py-6 px-9 rounded mt-8">
+          Tickets
+        </button>*/}
+        {/*<div>
+          <CTAButton />
+        </div>*/}
       </div>
     </section>
   );

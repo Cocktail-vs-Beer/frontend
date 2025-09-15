@@ -32,25 +32,24 @@ function Nav() {
             afterwork
           </a>
         </li>
-        {/*<li className="mr-8">
+        <li className="mr-8">
           <a className="uppercase font-light" href="/#lineup">
             line up
           </a>
-        </li>*/}
+        </li>
         <li className="mr-8">
           <a className="uppercase font-light" href="/#faq">
             faq
           </a>
         </li>
-        {/*<li className="">
+        <li className="">
           <CTAButton />
-        </li>*/}
+        </li>
       </ul>
     );
   }
 
-  return null;
-  // return <CTAButton />;
+  return <CTAButton />;
 }
 
 export default Navbar;
