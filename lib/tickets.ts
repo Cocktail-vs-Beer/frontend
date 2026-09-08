@@ -5,10 +5,9 @@ const DEFAULT_API_URL =
     ? "http://localhost:3000"
     : "https://ticketnode.online";
 
-const API_BASE_URL = (process.env.TICKETNODE_API_URL ?? DEFAULT_API_URL).replace(
-  /\/$/,
-  "",
-);
+const API_BASE_URL = (
+  process.env.TICKETNODE_API_URL ?? DEFAULT_API_URL
+).replace(/\/$/, "");
 
 export const EVENT_ID =
   process.env.TICKETNODE_EVENT_ID ?? "2dd51390-45fe-4a8d-a72a-3c0a4b54bc33";
@@ -20,10 +19,14 @@ export type TicketType = {
   price_cents: number;
   currency: string;
   max_per_order: number;
-  available?: number;
   index: number;
   sales_start_at: string | null;
   sales_end_at: string | null;
+  /**
+   * Remaining capacity is zero. Sold-out types are still returned so the
+   * storefront can list them rather than silently drop them.
+   */
+  sold_out: boolean;
 };
 
 export type OrderLine = {
@@ -97,6 +100,7 @@ async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
  * without it the ticket types are always fetched fresh.
  */
 export async function getTicketTypes(options?: { revalidate?: number }) {
+  console.log(API_BASE_URL, EVENT_ID);
   const response = await apiRequest<{ ticket_types: TicketType[] }>(
     `/api/events/${EVENT_ID}/ticket_types`,
     options?.revalidate === undefined

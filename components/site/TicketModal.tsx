@@ -30,8 +30,7 @@ function formatTicketPrice(ticketType: TicketType) {
 
 function getTicketStatus(ticketType: TicketType) {
   const now = Date.now();
-  if (ticketType.available !== undefined && ticketType.available <= 0)
-    return { available: false, label: "SOLD OUT" };
+  if (ticketType.sold_out) return { available: false, label: "SOLD OUT" };
   if (
     ticketType.sales_start_at &&
     new Date(ticketType.sales_start_at).getTime() > now
@@ -208,13 +207,7 @@ export function TicketModal({
                         }
                       >
                         {Array.from(
-                          {
-                            length:
-                              Math.min(
-                                ticketType.max_per_order,
-                                ticketType.available ?? ticketType.max_per_order,
-                              ) + 1,
-                          },
+                          { length: ticketType.max_per_order + 1 },
                           (_, quantity) => (
                             <option value={quantity} key={quantity}>
                               {quantity}
