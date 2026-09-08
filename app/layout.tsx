@@ -1,27 +1,43 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+
+import { siteDescription, siteName, siteTitle, siteUrl } from "../lib/site";
 import "./global.css";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cocktailvsbeer.be";
-
-const description =
-  "Cocktail vs Beer 2026 in Machelen: afterwork op vrijdag 2 oktober en een avond vol cocktails, bier en muziek op zaterdag 3 oktober.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Cocktail vs Beer 2026",
-  description,
+  title: siteTitle,
+  description: siteDescription,
+  applicationName: siteName,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Cocktail vs Beer 2026",
-    description,
-    url: siteUrl,
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    siteName,
     locale: "nl_BE",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
+  appleWebApp: {
+    capable: true,
+    title: siteName,
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 
 export const viewport: Viewport = {
   themeColor: "#07133a",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

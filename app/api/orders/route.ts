@@ -41,7 +41,9 @@ export async function POST(request: Request) {
   if (!lines) return badRequest("Kies minstens één ticket.");
 
   // The return URLs are built server-side so the checkout can only ever come
-  // back to this site, whatever the client sends.
+  // back to this site, whatever the client sends. Unlike lib/site.ts this
+  // falls back to the request origin, so a local or preview checkout returns
+  // to the host the buyer is actually on.
   const origin = process.env.NEXT_PUBLIC_SITE_URL ?? new URL(request.url).origin;
 
   try {
