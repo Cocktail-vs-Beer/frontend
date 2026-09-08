@@ -100,7 +100,6 @@ async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
  * without it the ticket types are always fetched fresh.
  */
 export async function getTicketTypes(options?: { revalidate?: number }) {
-  console.log(API_BASE_URL, EVENT_ID);
   const response = await apiRequest<{ ticket_types: TicketType[] }>(
     `/api/events/${EVENT_ID}/ticket_types`,
     options?.revalidate === undefined
