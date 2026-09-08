@@ -6,7 +6,6 @@ import { TicketButton } from "./TicketButton";
 const navItems = [
   ["LINE-UP", "line-up"],
   ["AFTERWORK", "afterwork"],
-  ["TICKETS", "tickets"],
   ["FAQ", "faq"],
 ] as const;
 
