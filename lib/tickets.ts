@@ -106,6 +106,7 @@ export async function getTicketTypes(options?: { revalidate?: number }) {
       ? { cache: "no-store" }
       : { next: { revalidate: options.revalidate } },
   );
+  console.log(response);
   return response.ticket_types.sort((a, b) => a.index - b.index);
 }
 
