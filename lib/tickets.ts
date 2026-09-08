@@ -1,6 +1,14 @@
-const API_BASE_URL = (
-  process.env.TICKETNODE_API_URL ?? "https://ticketnode.online"
-).replace(/\/$/, "");
+// Development points at a Ticketnode running locally; set TICKETNODE_API_URL
+// to override either default.
+const DEFAULT_API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://ticketnode.online";
+
+const API_BASE_URL = (process.env.TICKETNODE_API_URL ?? DEFAULT_API_URL).replace(
+  /\/$/,
+  "",
+);
 
 export const EVENT_ID =
   process.env.TICKETNODE_EVENT_ID ?? "2dd51390-45fe-4a8d-a72a-3c0a4b54bc33";
