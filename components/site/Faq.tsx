@@ -1,3 +1,5 @@
+import { Arrow } from "./primitives";
+
 const faqItems = [
   {
     question: "Help, ik heb geen bevestigingsmail ontvangen.",
@@ -34,7 +36,10 @@ export function Faq() {
       <div className="faq-list">
         {faqItems.map(({ question, answer }) => (
           <details key={question}>
-            <summary>{question}</summary>
+            <summary>
+              <Arrow/>
+              {question}
+            </summary>
             <p>{answer}</p>
           </details>
         ))}
