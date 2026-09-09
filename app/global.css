@@ -7,10 +7,10 @@ body { margin:0; min-width:320px; color:var(--ink); background:var(--cream); fon
 button,a { color:inherit; } button { border:0; cursor:pointer; font:inherit; } a { text-decoration:none; }
 .page { width:100%; overflow:hidden; background:var(--cream); }
 .paper-grid { background-color:var(--cream); background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:64px 64px; }
-.arrow { display:inline-block; font:400 1.4em/.6 Arial,sans-serif; transition:transform 180ms ease; }
+.arrow { display:inline-block; width:1.15em; height:1.15em; flex:0 0 auto; transition:transform 180ms ease; }
+.arrow svg { display:block; width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:2; }
 button:hover .arrow,a:hover .arrow { transform:translateX(4px); }
-.diagonal { transform:rotate(-45deg); }
-button:hover .diagonal,a:hover .diagonal { transform:rotate(-45deg) translate(3px,3px); }
+button:hover .diagonal,a:hover .diagonal { transform:translate(3px,-3px); }
 
 .wordmark { display:inline-flex; flex-direction:column; font:900 30px/.82 var(--display); letter-spacing:-.035em; }
 .wordmark span { display:block; }
@@ -85,6 +85,7 @@ button:hover .diagonal,a:hover .diagonal { transform:rotate(-45deg) translate(3p
 .ticket-marquee-group { display:flex; align-items:center; gap:48px; padding-right:48px; }
 .ticket-marquee span { display:flex; align-items:center; justify-content:center; gap:18px; min-width:280px; text-align:center; font:900 20px/1 var(--display); }
 .ticket-marquee svg { width:27px; height:27px; fill:none; stroke:currentColor; stroke-width:1.2; }
+.ticket-marquee .arrow svg { width:100%; height:100%; stroke-width:2; }
 .ticket-marquee:hover .ticket-marquee-track { animation-play-state:paused; }
 .ticket-marquee.is-reverse .ticket-marquee-track { animation-direction:reverse; }
 @keyframes ticket-marquee { to { transform:translateX(-50%); } }

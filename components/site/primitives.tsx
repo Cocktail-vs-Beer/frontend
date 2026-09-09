@@ -9,7 +9,13 @@ export function Wordmark() {
 export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return (
     <span className={diagonal ? "arrow diagonal" : "arrow"} aria-hidden="true">
-      {diagonal ? "↗" : "→"}
+      <svg viewBox="0 0 24 24">
+        {diagonal ? (
+          <path d="M7 17 17 7M8 7h9v9" />
+        ) : (
+          <path d="M4 12h14M13 5l7 7-7 7" />
+        )}
+      </svg>
     </span>
   );
 }
