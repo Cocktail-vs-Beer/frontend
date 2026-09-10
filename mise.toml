@@ -1,0 +1,4 @@
+# Toolchain for this repo. Vercel reads engines.node in package.json; this is
+# the local equivalent.
+[tools]
+node = "24"

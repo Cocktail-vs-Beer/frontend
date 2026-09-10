@@ -1,109 +1,119 @@
-export interface Ticket {
+// Development points at a Ticketnode running locally; set TICKETNODE_API_URL
+// to override either default.
+const DEFAULT_API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://ticketnode.online";
+
+const API_BASE_URL = (
+  process.env.TICKETNODE_API_URL ?? DEFAULT_API_URL
+).replace(/\/$/, "");
+
+export const EVENT_ID =
+  process.env.TICKETNODE_EVENT_ID ?? "2dd51390-45fe-4a8d-a72a-3c0a4b54bc33";
+
+export type TicketType = {
   id: string;
   name: string;
-  description: string;
-  price: number;
-  soldOut: boolean;
+  description: string | null;
+  price_cents: number;
+  currency: string;
+  max_per_order: number;
+  index: number;
+  sales_start_at: string | null;
+  sales_end_at: string | null;
+  /**
+   * Remaining capacity is zero. Sold-out types are still returned so the
+   * storefront can list them rather than silently drop them.
+   */
+  sold_out: boolean;
+};
+
+export type OrderLine = {
+  ticket_type_id: string;
+  quantity: number;
+};
+
+export type OrderRequest = {
+  name: string;
+  email: string;
+  lines: OrderLine[];
+  success_url: string;
+  cancel_url: string;
+};
+
+type ApiErrorItem = {
+  code: string;
+  message: string;
+};
+
+type ErrorResponse = {
+  errors?: ApiErrorItem[];
+};
+
+export class TicketApiError extends Error {
+  code: string;
+  status: number;
+
+  constructor(code: string, message: string, status = 502) {
+    super(message);
+    this.name = "TicketApiError";
+    this.code = code;
+    this.status = status;
+  }
 }
 
-// Server-side function to fetch tickets
-export async function fetchTickets(): Promise<Ticket[]> {
-  const BASE_URL = process.env.NEXT_PUBLIC_ENDPOINT;
-
-  if (!BASE_URL) {
-    console.error(
-      "NEXT_PUBLIC_ENDPOINT environment variable is not configured",
-    );
-    throw new Error("API endpoint not configured");
-  }
-
-  const url = `${BASE_URL}/tickets`;
+async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
+  let response: Response;
 
   try {
-    console.log(`Fetching tickets from: ${url}`);
-
-    const response = await fetch(url, {
-      cache: "no-store", // Ensure fresh data on each request
+    response = await fetch(`${API_BASE_URL}${path}`, {
+      ...init,
       headers: {
-        "Content-Type": "application/json",
+        Accept: "application/json",
+        ...init?.headers,
       },
     });
-
-    if (!response.ok) {
-      const errorText = await response.text().catch(() => "Unknown error");
-      console.error(
-        `HTTP ${response.status} error fetching tickets:`,
-        errorText,
-      );
-
-      if (response.status === 404) {
-        throw new Error("Tickets not found for this event");
-      } else if (response.status === 500) {
-        throw new Error("Server error - please try again later");
-      } else if (response.status >= 400 && response.status < 500) {
-        throw new Error("Invalid request - please contact support");
-      } else {
-        throw new Error(
-          `Network error (${response.status}) - please try again`,
-        );
-      }
-    }
-
-    const jsonResponse = await response.json();
-
-    // Validate response structure
-    if (!jsonResponse || typeof jsonResponse !== "object") {
-      console.error("Invalid response format:", jsonResponse);
-      throw new Error("Invalid response format from server");
-    }
-
-    const tickets = jsonResponse || [];
-
-    // Validate tickets array
-    if (!Array.isArray(tickets)) {
-      console.error("Expected tickets array, got:", typeof tickets);
-      throw new Error("Invalid tickets data format");
-    }
-
-    // Validate each ticket object
-    const validatedTickets: Ticket[] = tickets.filter((ticket: any) => {
-      if (!ticket || typeof ticket !== "object") {
-        console.warn("Skipping invalid ticket object:", ticket);
-        return false;
-      }
-
-      if (
-        !ticket.id ||
-        !ticket.name ||
-        typeof ticket.price !== "number" ||
-        typeof ticket.soldOut !== "boolean"
-      ) {
-        console.warn("Skipping ticket with missing required fields:", ticket);
-        return false;
-      }
-
-      return true;
-    });
-
-    console.log(
-      `Successfully fetched ${validatedTickets.length} valid tickets`,
+  } catch (cause) {
+    console.error(`Ticket API unreachable at ${API_BASE_URL}${path}:`, cause);
+    throw new TicketApiError(
+      "REQUEST_FAILED",
+      "De ticketservice is momenteel niet beschikbaar.",
     );
-    return validatedTickets;
-  } catch (error) {
-    if (error instanceof TypeError && error.message.includes("fetch")) {
-      console.error("Network connection error:", error);
-      throw new Error(
-        "Unable to connect to server - please check your internet connection",
-      );
-    }
-
-    console.error("Failed to fetch tickets:", error);
-
-    // Re-throw our custom errors, wrap unknown errors
-    if (error instanceof Error) {
-      throw error;
-    } else {
-      throw new Error("An unexpected error occurred while fetching tickets");
-    }
   }
+
+  if (!response.ok) {
+    const body = (await response.json().catch(() => ({}))) as ErrorResponse;
+    const error = body.errors?.[0];
+    throw new TicketApiError(
+      error?.code ?? "REQUEST_FAILED",
+      error?.message ?? "De ticketservice is momenteel niet beschikbaar.",
+      response.status,
+    );
+  }
+
+  return response.json() as Promise<T>;
+}
+
+/**
+ * Pass `revalidate` to let a page cache the result for that many seconds;
+ * without it the ticket types are always fetched fresh.
+ */
+export async function getTicketTypes(options?: { revalidate?: number }) {
+  const response = await apiRequest<{ ticket_types: TicketType[] }>(
+    `/api/events/${EVENT_ID}/ticket_types`,
+    options?.revalidate === undefined
+      ? { cache: "no-store" }
+      : { next: { revalidate: options.revalidate } },
+  );
+  return response.ticket_types.sort((a, b) => a.index - b.index);
+}
+
+export async function createOrder(order: OrderRequest) {
+  return apiRequest<{ checkout_url: string }>("/api/orders", {
+    method: "POST",
+    cache: "no-store",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ order: { ...order, event_id: EVENT_ID } }),
+  });
 }
